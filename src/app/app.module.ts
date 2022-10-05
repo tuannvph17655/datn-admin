@@ -18,6 +18,7 @@ import { PagesError404Component } from './pages/pages-error404/pages-error404.co
 import { SizesComponent } from './components/sizes/sizes.component';
 import { EventComponent } from './components/event/event.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { CategoryComponent } from './components/category/category.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +36,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     PagesError404Component,
     SizesComponent,
     EventComponent,
+    CategoryComponent,
   ],
   imports: [
     BrowserModule,

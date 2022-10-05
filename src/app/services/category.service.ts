@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { Category } from '../models/Category';
@@ -25,6 +25,10 @@ export class CategoryService {
   constructor(private http : HttpClient) { }
 
   public getListCategory() : Observable<Category[]>{
-    return this.http.get<Category[]>(AUTH_API + "category/find-all");
+    return this.http.get<Category[]>(AUTH_API + "category/find-category");
+  }
+
+  public getCategory(categoryId : BigInt) {
+    return this.http.get(AUTH_API + 'find-by-id/' + categoryId);
   }
 }
