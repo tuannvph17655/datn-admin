@@ -12,7 +12,6 @@ import { UsersProfileComponent } from './pages/users-profile/users-profile.compo
 import { SizesComponent } from './components/sizes/sizes.component';
 import { EventComponent } from './components/event/event.component';
 import { VoucherComponent } from './components/voucher/voucher.component';
-import { CategoryComponent } from './components/category/category.component';
 const routes: Routes = [
   { path: '', component: DashboardComponent },
   { path: 'dashboard', component: DashboardComponent },
@@ -27,7 +26,6 @@ const routes: Routes = [
   { path: "sizes", component:SizesComponent},
   { path: "events", component:EventComponent},
   { path: "vouchers", component:VoucherComponent},
-  { path: "categories", component:CategoryComponent}
 ];
 
 @NgModule({
