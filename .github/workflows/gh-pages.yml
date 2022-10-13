@@ -1,9 +1,9 @@
-name: Angular Build
+name: DATN-FE-ADMIN-BUILD
 
 on:
   push:
     branches:
-    - main
+    - develop
 
 jobs:
   deploy:
