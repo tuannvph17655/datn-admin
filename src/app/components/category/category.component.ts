@@ -27,7 +27,7 @@ export class CategoryComponent implements OnInit {
     })
   }
 
-  private getCategory(id : BigInt) {
+  public getCategory(id : BigInt) {
     this.categoryService.getCategory(id).subscribe({
       next : (res:any) => {
         console.log("category detail" , res);
@@ -36,6 +36,23 @@ export class CategoryComponent implements OnInit {
         console.log('errr', err)
       }
     })
+  }
+
+  public onOpenMoal(employee : any, mode : string): void {
+    const container = document.getElementById('main-container');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-bs-toggle','modal');
+    if(mode === 'add') {
+      button.setAttribute('data-bs-target','addCategoryModal');
+    }
+    if(mode === 'edit') {
+      button.setAttribute('data-target','updateCategoryModal');
+    }
+    if(mode === 'delete') {
+      button.setAttribute('data-target','deleteCategoryModal');
+    }
   }
 
 }
