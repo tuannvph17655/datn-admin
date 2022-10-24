@@ -6,10 +6,8 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { SidebarComponent } from './layouts/sidebar/sidebar.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { TabsComponent } from './components/tabs/tabs.component';
-import { PaginationComponent } from './components/pagination/pagination.component';
 import { TablesDataComponent } from './components/tables-data/tables-data.component';
 import { UsersProfileComponent } from './pages/users-profile/users-profile.component';
 import { PagesRegisterComponent } from './pages/pages-register/pages-register.component';
@@ -25,10 +23,8 @@ import { CategoryComponent } from './components/category/category.component';
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
-    DashboardComponent,
     ModalComponent,
     TabsComponent,
-    PaginationComponent,
     TablesDataComponent,
     UsersProfileComponent,
     PagesRegisterComponent,

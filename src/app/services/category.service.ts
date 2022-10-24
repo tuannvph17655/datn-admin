@@ -31,4 +31,5 @@ export class CategoryService {
   public getCategory(categoryId : BigInt) {
     return this.http.get(AUTH_API + 'find-by-id/' + categoryId);
   }
+
 }
