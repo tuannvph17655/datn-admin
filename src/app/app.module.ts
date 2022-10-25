@@ -18,6 +18,9 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CategoryComponent } from './components/category/category.component';
 import { CommonModule }   from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {ToastrModule} from "ngx-toastr";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {JwtModule} from "@auth0/angular-jwt";
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +43,18 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
         HttpClientModule,
         BrowserModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        ToastrModule.forRoot(), // ToastrModule added
+      JwtModule.forRoot({
+        config: {
+          tokenGetter: () => {
+            return localStorage.getItem('auth-token');
+          },
+          allowedDomains: ['localhost:8888'],
+        }
+
+      }),
     ],
   providers: [],
   bootstrap: [AppComponent]

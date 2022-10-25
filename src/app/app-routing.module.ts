@@ -10,18 +10,19 @@ import { SizesComponent } from './components/sizes/sizes.component';
 import { EventComponent } from './components/event/event.component';
 import { VoucherComponent } from './components/voucher/voucher.component';
 import { CategoryComponent } from './components/category/category.component';
+import {AuthGuard} from "./guards/auth.guard";
 const routes: Routes = [
   { path: '',  component: SignInComponent },
-  { path: 'admin/orders', component: OrderComponent },
-  { path: 'tables-data', component: TablesDataComponent },
-  { path: 'tabs', component: TabsComponent },
-  { path: 'pages-error404', component: PagesError404Component },
-  { path: 'pages-register', component: SignInComponent },
-  { path: 'user-profile', component: UsersProfileComponent },
-  { path: "sizes", component:SizesComponent},
-  { path: "events", component:EventComponent},
-  { path: "vouchers", component:VoucherComponent},
-  { path: "category", component: CategoryComponent}
+  { path: 'admin/orders', component: OrderComponent , canActivate: [AuthGuard]},
+  { path: 'tables-data', component: TablesDataComponent ,canActivate: [AuthGuard]},
+  { path: 'tabs', component: TabsComponent ,canActivate: [AuthGuard]},
+  { path: 'pages-error404', component: PagesError404Component ,canActivate: [AuthGuard]},
+  { path: 'login', component: SignInComponent ,canActivate: [AuthGuard]},
+  { path: 'user-profile', component: UsersProfileComponent ,canActivate: [AuthGuard]},
+  { path: "sizes", component:SizesComponent,canActivate: [AuthGuard]},
+  { path: "events", component:EventComponent,canActivate: [AuthGuard]},
+  { path: "vouchers", component:VoucherComponent,canActivate: [AuthGuard]},
+  { path: "category", component: CategoryComponent,canActivate: [AuthGuard]}
 ];
 
 @NgModule({

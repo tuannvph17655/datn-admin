@@ -1,5 +1,5 @@
-<app-header *ngIf="!(_router.url === '/pages-register')" ></app-header>
-<app-sidebar *ngIf="!(_router.url === '/pages-register')" ></app-sidebar>
+<app-header *ngIf="!(_router.url === '/login' || _router.url ==='/') " ></app-header>
+<app-sidebar *ngIf="!(_router.url === '/login' || _router.url ==='/') " ></app-sidebar>
 <router-outlet></router-outlet>
-<app-footer *ngIf="!(_router.url === '/pages-register')" ></app-footer>
+<app-footer *ngIf="!(_router.url === '/login' || _router.url ==='/') " ></app-footer>
 
