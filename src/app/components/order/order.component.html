@@ -16,31 +16,29 @@
             <div class="card">
                <div class="card-body">
                   <h5 class="card-title">Tất cả đơn hàng của shop</h5>
-                  <table class="table datatable">
+                  <table class="table">
                      <thead>
                         <tr>
-                           <th scope="col">Mã đơn</th>
-                           <th scope="col">Ngày mua</th>
-                           <th scope="col">Địa chỉ</th>
-                           <th scope="col">Giá trị đơn hàng</th>
-                           <th scope="col">Trạng thái thanh toán</th>
-                           <th scope="col">Trạng thái đơn hàng</th>
-                           <th scope="col">Thao tác</th>
+                           <th>Mã đơn</th>
+                           <th>Ngày mua</th>
+                           <th>Địa chỉ</th>
+                           <th>Giá trị đơn hàng</th>
+                           <th>Trạng thái thanh toán</th>
+                           <th>Trạng thái đơn hàng</th>
                         </tr>
                      </thead>
                      <tbody>
-                        <tr>
-                           <th scope="row">1</th>
-                           <td>Brandon Jacob</td>
-                           <td>Designer</td>
-                           <td>28</td>
-                           <td>2016-05-25</td>
-                           <td>28</td>
-                           <td>2016-05-25</td>
-                        </tr>
+                     <tr  *ngFor="let order of orders">
+                       <td class="orderCode" ><a routerLink="">{{order.orderCode}}</a></td>
+                       <td>{{order.createDate}}</td>
+                       <td>{{order.address}}</td>
+                       <td>{{order.totalPrice}}</td>
+                       <td>{{order.payed}}</td>
+                       <td>{{order.statusValue}}</td>
+                     </tr>
                      </tbody>
                   </table>
-                  
+
                </div>
             </div>
          </div>

@@ -21,6 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ToastrModule} from "ngx-toastr";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {JwtModule} from "@auth0/angular-jwt";
+import { OrderDetailComponent } from './components/order-detail/order-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +37,7 @@ import {JwtModule} from "@auth0/angular-jwt";
     SizesComponent,
     EventComponent,
     CategoryComponent,
+    OrderDetailComponent,
   ],
     imports: [
         BrowserModule,
