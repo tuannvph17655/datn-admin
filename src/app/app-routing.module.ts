@@ -11,6 +11,7 @@ import { EventComponent } from './components/event/event.component';
 import { VoucherComponent } from './components/voucher/voucher.component';
 import { CategoryComponent } from './components/category/category.component';
 import {AuthGuard} from "./guards/auth.guard";
+import { OrderDetailComponent } from './components/order-detail/order-detail.component';
 const routes: Routes = [
   { path: '',  component: SignInComponent },
   { path: 'admin/orders', component: OrderComponent , canActivate: [AuthGuard]},
@@ -22,11 +23,13 @@ const routes: Routes = [
   { path: "sizes", component:SizesComponent,canActivate: [AuthGuard]},
   { path: "events", component:EventComponent,canActivate: [AuthGuard]},
   { path: "vouchers", component:VoucherComponent,canActivate: [AuthGuard]},
-  { path: "category", component: CategoryComponent,canActivate: [AuthGuard]}
+  { path: "category", component: CategoryComponent,canActivate: [AuthGuard]},
+  { path: "order-detail/:id",component : OrderDetailComponent}
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  declarations: []
 })
 export class AppRoutingModule { }
