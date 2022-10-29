@@ -29,10 +29,10 @@
                      </thead>
                      <tbody>
                      <tr  *ngFor="let order of orders">
-                       <td class="orderCode" ><a routerLink="">{{order.orderCode}}</a></td>
+                       <td class="orderCode" ><a [routerLink]="['/order-detail/' + order.orderId]">{{order.orderCode}}</a></td>
                        <td>{{order.createDate}}</td>
                        <td>{{order.address}}</td>
-                       <td>{{order.totalPrice}}</td>
+                       <td class="price" style="color:#fcaf17;" >{{order.totalPrice}}₫</td>
                        <td>{{order.payed}}</td>
                        <td>{{order.statusValue}}</td>
                      </tr>
