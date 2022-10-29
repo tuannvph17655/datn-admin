@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -48,17 +48,18 @@ import { OrderDetailComponent } from './components/order-detail/order-detail.com
         ReactiveFormsModule,
         BrowserAnimationsModule,
         ToastrModule.forRoot(), // ToastrModule added
-      JwtModule.forRoot({
-        config: {
-          tokenGetter: () => {
-            return localStorage.getItem('auth-token');
-          },
-          allowedDomains: ['localhost:8888'],
-        }
-
-      }),
+        JwtModule.forRoot({
+          config: {
+            tokenGetter: () => {
+              return localStorage.getItem('auth-token');
+            },
+            allowedDomains: ['localhost:8888'],
+          }
+        }),
+        
     ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule { }
