@@ -17,7 +17,8 @@
         <div class="payment_status" style="margin-right: 35px;display: inline-block;line-height: 16px;">
             <span class="note">Trạng thái thanh toán : </span>
             <span class="status_pending">
-                <span class="span_pending" style="color: rgb(252, 175, 23)"><strong> {{orderInfo?.payed ?  'Đã thanh toán' : 'Chưa thanh toán'}}</strong></span>
+                <span class="span_pending" style="color: rgb(252, 175, 23)"><strong> {{orderInfo?.payed ? 'Đã thanh
+                        toán' : 'Chưa thanh toán'}}</strong></span>
             </span>
         </div>
         <div class="shipping_status" style="display: inline-block;font-size: 14px;line-height: 16px;">
@@ -80,10 +81,10 @@
                         Ghi chú</h2>
                     <div class="box-des"
                         style="min-height: 30px;padding: 13px 15px 10px 20px;border: 1px solid #dde1ef;background: 0 0;">
-                        <p >{{orderInfo.note}}</p>
+                        <p>{{orderInfo.note}}</p>
                     </div>
                 </div>
-                
+
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12" style="padding-left: 10px;padding-right: 10px;">
                 <div class="table-order"
@@ -110,7 +111,7 @@
                                         </div>
                                         <div class="content_right"
                                             style="margin-top: 20px;text-align: left;font-size: 14px;line-height: 16px; align-self: normal; display: flex;flex-flow: column;padding-left: 41px;">
-                                            <a>product?.productName</a>
+                                            <a>{{product.name}}</a>
 
                                             <p style="color: rgb(130, 130, 130); font-size: 12px">
                                                 {{product.color}}/{{product.size}}
@@ -129,74 +130,66 @@
                                     </td>
                                 </tr>
                             </tbody>
-                                                <table class="table totalorders" style="margin-left: 300px;">
-                        <tfoot>
-                            <tr class="order_summary">
-                                <td colspan="1" style="border: 0;text-align: right;vertical-align: middle;">Phí vận
-                                    chuyển</td>
-                                <td class="total money right"
-                                    style="border: 0;text-align: left;vertical-align: middle;">{{priceResult.ship}}
-                                </td>
-                            </tr>
-                            
-                            <tr class="order_summary order_total">
-                                <td style="border: 0;text-align: right;vertical-align: middle;">Giá</td>
-                                <td class="right" style="border: 0;text-align: left;vertical-align: middle;">
-                                    <strong style="color: rgb(252, 175, 23); font-size: 16px">
-                                       {{priceResult.shop}}
-                                    </strong>
-                                </td>
-                            </tr>
-                            
-                            <tr class="order_summary order_total">
-                                <td style="border: 0;text-align: right;vertical-align: middle;">Tổng tiền</td>
-                                <td class="right" style="border: 0;text-align: left;vertical-align: middle;">
-                                    <strong style="color: rgb(252, 175, 23); font-size: 16px">
-                                        {{priceResult.total}}
-                                    </strong>
-                                </td>
-                            </tr>
-                        </tfoot>
-                    </table>
+                            <table class="table totalorders" style="margin-left: 300px;">
+                                <tfoot>
+                                    <tr class="order_summary">
+                                        <td colspan="1" style="border: 0;text-align: right;vertical-align: middle;">Phí
+                                            vận
+                                            chuyển</td>
+                                        <td class="total money right"
+                                            style="border: 0;text-align: left;vertical-align: middle;">
+                                            {{priceResult.ship}}
+                                        </td>
+                                    </tr>
+
+                                    <tr class="order_summary order_total">
+                                        <td style="border: 0;text-align: right;vertical-align: middle;">Giá</td>
+                                        <td class="right" style="border: 0;text-align: left;vertical-align: middle;">
+                                            <strong style="color: rgb(252, 175, 23); font-size: 16px">
+                                                {{priceResult.shop}}
+                                            </strong>
+                                        </td>
+                                    </tr>
+
+                                    <tr class="order_summary order_total">
+                                        <td style="border: 0;text-align: right;vertical-align: middle;">Tổng tiền</td>
+                                        <td class="right" style="border: 0;text-align: left;vertical-align: middle;">
+                                            <strong style="color: rgb(252, 175, 23); font-size: 16px">
+                                                {{priceResult.total}}
+                                            </strong>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
                         </table>
                     </div>
-
                 </div>
-                <button class="back" style="
-      display: inline-block;
-      width: 150px;
-      line-height: 48px;
-      text-align: center;
-      background: #245fc5;
-      color: #fff;
-      font-family: svn-gilroy bold;
-      font-size: 18px;
-      margin: 10px 10px 28px 10px;
-      float: right;
-      right: 0;
-      bottom: -68px;
-      border-radius: 4px;
-      border: none;">
-                    Xác nhận đơn</button>
-                    <button class="back" style="
-      display: inline-block;
-      width: 150px;
-      line-height: 48px;
-      text-align: center;
-      background: #c44b38;
-      color: #fff;
-      font-family: svn-gilroy bold;
-      font-size: 18px;
-      margin: 10px 10px 28px 10px;
-      float: right;
-      right: 0;
-      bottom: -68px;
-      border-radius: 4px;
-      border: none;">
-                    Hủy đơn</button>
+                <button class="back back-button btn btn-primary" data-bs-toggle="modal" data-bs-target="#verticalycentered">Xác nhận đơn</button>
+                <button class="back back-button btn btn-danger">Hủy đơn</button>
             </div>
         </div>
     </div>
-
-
+    <div class="modal fade" id="verticalycentered" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Ghi chú !</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="changOrderStatusForm"> 
+                        <textarea class="form-control" id="noteStatus" rows="3" formControlName="note"></textarea>
+                        <div *ngIf="f['status'].touched && f['status'].invalid">
+                            <div *ngIf="f['status'].errors && f['status'].errors['required']">
+                              <p class="field__message">Vui lòng nhập họ tên</p>
+                            </div>
+                          </div>
+                    </form> 
+                </div>
+                <div class="modal-footer"> 
+                    <button type="button" class="btn btn-secondary"data-bs-dismiss="modal">Đóng</button> 
+                    <button type="button" class="btn btn-primary" (click)="saveChangeStatus()">Xác nhận</button></div>
+            </div>
+        </div>
+    </div>
 </main>

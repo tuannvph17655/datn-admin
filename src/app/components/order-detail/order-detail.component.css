@@ -358,3 +358,17 @@ h1 {
   background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPQTYaVL3HvEV8GJY1yd338gswSOfz4UEmj3IB4lKXqyFr2OB908mWazr5UyFrWLNc6XY&usqp=CAU);
 	cursor: pointer;
 }
+.back-button {
+	display: inline-block;
+	width: 150px;
+	line-height: 48px;
+	text-align: center;
+	font-family: svn-gilroy bold;
+	font-size: 18px;
+	margin: 10px 10px 28px 10px;
+	float: right;
+	right: 0;
+	bottom: -68px;
+	border-radius: 4px;
+	border: none;
+}
