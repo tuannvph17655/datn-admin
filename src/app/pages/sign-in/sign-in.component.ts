@@ -63,6 +63,7 @@ export class SignInComponent implements OnInit {
         const commands = 'admin/orders';
         console.log('res checkout', res);
         this.router.navigate([commands]);
+        // window.location.reload();
       // }
       //   window.localStorage.clear();
       //   this.toastr.warning('Tài khoản không có quyền!');

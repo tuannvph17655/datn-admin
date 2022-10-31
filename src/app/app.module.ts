@@ -22,6 +22,9 @@ import {ToastrModule} from "ngx-toastr";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {JwtModule} from "@auth0/angular-jwt";
 import { OrderDetailComponent } from './components/order-detail/order-detail.component';
+import { ColorComponent } from './components/color/color.component';
+import { SizeComponent } from './components/size/size.component';
+import { MaterialComponent } from './components/material/material.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,6 +41,9 @@ import { OrderDetailComponent } from './components/order-detail/order-detail.com
     EventComponent,
     CategoryComponent,
     OrderDetailComponent,
+    ColorComponent,
+    SizeComponent,
+    MaterialComponent,
   ],
     imports: [
         BrowserModule,
