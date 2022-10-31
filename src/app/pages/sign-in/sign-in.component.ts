@@ -60,7 +60,7 @@ export class SignInComponent implements OnInit {
         console.log(this.roles);
         console.log(res);
         this.toastr.success('Đăng nhập thành công !!');
-        const commands = 'admin/orders';
+        const commands = 'admin/pending-orders';
         console.log('res checkout', res);
         this.router.navigate([commands]);
         // window.location.reload();

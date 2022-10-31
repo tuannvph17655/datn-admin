@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { OrderComponent } from './components/order/order.component';
+import { PendingOrderComponent } from './components/pending-order/pending-order.component';
 import { TablesDataComponent } from './components/tables-data/tables-data.component';
 import { TabsComponent } from './components/tabs/tabs.component';
 import { PagesError404Component } from './pages/pages-error404/pages-error404.component';
@@ -14,7 +14,7 @@ import { AuthGuard } from "./guards/auth.guard";
 import { OrderDetailComponent } from './components/order-detail/order-detail.component';
 const routes: Routes = [
   { path: '', component: SignInComponent },
-  { path: 'admin/orders', component: OrderComponent, canActivate: [AuthGuard] },
+  { path: 'admin/pending-orders', component: PendingOrderComponent, canActivate: [AuthGuard] },
   { path: 'tables-data', component: TablesDataComponent, canActivate: [AuthGuard] },
   { path: 'tabs', component: TabsComponent, canActivate: [AuthGuard] },
   { path: 'pages-error404', component: PagesError404Component, canActivate: [AuthGuard] },
