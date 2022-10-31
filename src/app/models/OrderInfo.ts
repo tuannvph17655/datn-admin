@@ -6,6 +6,7 @@ export interface OrderInfo {
     paymentMethod ?: string,
     payed ?: boolean,
     statusOrder ?: string,
-    createDate ?: Date
+    createDate ?: Date,
+    statusOrderValue ? : string
 }
 

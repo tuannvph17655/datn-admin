@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { SidebarComponent } from './layouts/sidebar/sidebar.component';
-import { OrderComponent } from './components/order/order.component';
+import { PendingOrderComponent } from './components/pending-order/pending-order.component';
 import { TabsComponent } from './components/tabs/tabs.component';
 import { TablesDataComponent } from './components/tables-data/tables-data.component';
 import { UsersProfileComponent } from './pages/users-profile/users-profile.component';
@@ -31,7 +31,7 @@ import { MaterialComponent } from './components/material/material.component';
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
-    OrderComponent,
+    PendingOrderComponent,
     TabsComponent,
     TablesDataComponent,
     UsersProfileComponent,

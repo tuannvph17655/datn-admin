@@ -17,14 +17,13 @@
         <div class="payment_status" style="margin-right: 35px;display: inline-block;line-height: 16px;">
             <span class="note">Trạng thái thanh toán : </span>
             <span class="status_pending">
-                <span class="span_pending" style="color: rgb(252, 175, 23)"><strong> {{orderInfo?.payed ? 'Đã thanh
-                        toán' : 'Chưa thanh toán'}}</strong></span>
+                <span class="span_pending" style="color: rgb(252, 175, 23)"><strong> {{orderInfo?.payed ? 'Đã thanhtoán' : 'Chưa thanh toán'}}</strong></span>
             </span>
         </div>
         <div class="shipping_status" style="display: inline-block;font-size: 14px;line-height: 16px;">
             <span class="note">Trạng thái đơn hàng : </span>
 
-            <b class="span_" style="color: rgb(252, 175, 23)"> {{orderInfo.statusOrder}} </b>
+            <b class="span_" style="color: rgb(252, 175, 23)"> {{orderInfo.statusOrderValue}} </b>
         </div>
         <!-- <div class="code_order">
       <span class="note">Mã vận đơn:</span>
@@ -177,17 +176,17 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form [formGroup]="changOrderStatusForm"> 
+                    <form [formGroup]="changOrderStatusForm">
                         <textarea class="form-control" id="noteStatus" rows="3" formControlName="note"></textarea>
                         <div *ngIf="f['status'].touched && f['status'].invalid">
                             <div *ngIf="f['status'].errors && f['status'].errors['required']">
                               <p class="field__message">Vui lòng nhập họ tên</p>
                             </div>
                           </div>
-                    </form> 
+                    </form>
                 </div>
-                <div class="modal-footer"> 
-                    <button type="button" class="btn btn-secondary"data-bs-dismiss="modal">Đóng</button> 
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary"data-bs-dismiss="modal">Đóng</button>
                     <button type="button" class="btn btn-primary" (click)="saveChangeStatus()">Xác nhận</button></div>
             </div>
         </div>
