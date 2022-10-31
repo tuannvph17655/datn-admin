@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PendingOrderComponent } from './components/pending-order/pending-order.component';
+import { PendingOrderComponent } from './components/order/pending-order/pending-order.component';
 import { TablesDataComponent } from './components/tables-data/tables-data.component';
 import { TabsComponent } from './components/tabs/tabs.component';
 import { PagesError404Component } from './pages/pages-error404/pages-error404.component';
@@ -12,8 +12,11 @@ import { VoucherComponent } from './components/voucher/voucher.component';
 import { CategoryComponent } from './components/category/category.component';
 import { AuthGuard } from "./guards/auth.guard";
 import { OrderDetailComponent } from './components/order-detail/order-detail.component';
+import { CancelOrderComponent} from "./components/order/cancel-order/cancel-order.component";
+
 const routes: Routes = [
   { path: '', component: SignInComponent },
+  { path: 'admin/cancel-orders', component: CancelOrderComponent, canActivate: [AuthGuard] },
   { path: 'admin/pending-orders', component: PendingOrderComponent, canActivate: [AuthGuard] },
   { path: 'tables-data', component: TablesDataComponent, canActivate: [AuthGuard] },
   { path: 'tabs', component: TabsComponent, canActivate: [AuthGuard] },
@@ -24,7 +27,8 @@ const routes: Routes = [
   { path: "events", component: EventComponent, canActivate: [AuthGuard] },
   { path: "vouchers", component: VoucherComponent, canActivate: [AuthGuard] },
   { path: "category", component: CategoryComponent, canActivate: [AuthGuard] },
-  { path: "order-detail/:id", component: OrderDetailComponent }
+  { path: "order-detail/:id", component: OrderDetailComponent },
+
 ];
 
 @NgModule({

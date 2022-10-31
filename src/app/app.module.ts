@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { SidebarComponent } from './layouts/sidebar/sidebar.component';
-import { PendingOrderComponent } from './components/pending-order/pending-order.component';
+import { PendingOrderComponent } from './components/order/pending-order/pending-order.component';
 import { TabsComponent } from './components/tabs/tabs.component';
 import { TablesDataComponent } from './components/tables-data/tables-data.component';
 import { UsersProfileComponent } from './pages/users-profile/users-profile.component';
@@ -25,6 +25,7 @@ import { OrderDetailComponent } from './components/order-detail/order-detail.com
 import { ColorComponent } from './components/color/color.component';
 import { SizeComponent } from './components/size/size.component';
 import { MaterialComponent } from './components/material/material.component';
+import { CancelOrderComponent } from './components/order/cancel-order/cancel-order.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +45,7 @@ import { MaterialComponent } from './components/material/material.component';
     ColorComponent,
     SizeComponent,
     MaterialComponent,
+    CancelOrderComponent,
   ],
     imports: [
         BrowserModule,
@@ -62,7 +64,7 @@ import { MaterialComponent } from './components/material/material.component';
             allowedDomains: ['localhost:8888'],
           }
         }),
-        
+
     ],
   providers: [],
   bootstrap: [AppComponent],
