@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Order} from "../../models/Order";
-import {OrderService} from "../../services/order.service";
-import {FilterOrderRequest} from "../../models/FilterOrderRequest";
+import {Order} from "../../../models/Order";
+import {OrderService} from "../../../services/order.service";
+import {FilterOrderRequest} from "../../../models/FilterOrderRequest";
 
 @Component({
   selector: 'app-pending-order',
