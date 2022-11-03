@@ -9,6 +9,8 @@ import { PriceResult } from 'src/app/models/PriceResult';
 import { ProductOrder } from 'src/app/models/ProductOrder';
 import { ChangeStatusService } from 'src/app/services/change-status.service';
 import { OrderDetailService } from 'src/app/services/order-detail.service';
+import {CancelOrder} from "../../models/CancelOrder";
+import {OrderService} from "../../services/order.service";
 @Component({
   selector: 'app-order-detail',
   templateUrl: './order-detail.component.html',
@@ -21,7 +23,8 @@ export class OrderDetailComponent implements OnInit {
   orderInfo !: OrderInfo;
   priceResult !: PriceResult;
   orderStatus !: OrderStatus;
-  
+  note : string = '';
+
   @ViewChild('verticalycentered') modal:any;
 
 
@@ -36,7 +39,8 @@ export class OrderDetailComponent implements OnInit {
     private activeRoute: ActivatedRoute,
     private orderDetailService : OrderDetailService,
     private changeStatusService :ChangeStatusService,
-    private toastr : ToastrService
+    private toastr : ToastrService,
+    private orderService : OrderService
   ) { }
 
   ngOnInit(): void {
@@ -72,11 +76,6 @@ export class OrderDetailComponent implements OnInit {
   saveChangeStatus() {
     this.changOrderStatusForm.value.id = this.orderDetail.id;
     this.changOrderStatusForm.value.status = 'ACCEPT';
-    // console.log("order form : " + this.changOrderStatusForm.value);
-    // this.orderStatus.id == this.changOrderStatusForm.value.id ;
-    // this.orderStatus.status == this.changOrderStatusForm.value.status ;
-    // this.orderStatus.id == this.changOrderStatusForm.value.id ;
-    // console.log("order status : ", +this.orderStatus);
     this.changeStatusService.changeStatusOrder(this.changOrderStatusForm.value).subscribe({
       next: (res:any) => {
         this.toastr.success("cập nhật trạng thái đơn hàng thành công !");
@@ -86,10 +85,18 @@ export class OrderDetailComponent implements OnInit {
         console.log(' : ',err);
       }
     })
-    
   }
-
-
-  
+  rejectOrder() {
+    const rejectOrder = new CancelOrder(this.orderDetail.id,this.changOrderStatusForm.value.note as string);
+    this.orderService.rejectOrder(rejectOrder).subscribe({
+      next: (res:any) => {
+        this.toastr.success("Hủy dơn hàng thành công");
+        const commands = 'admin/pending-orders';
+        this.router.navigate([commands]);
+      },error: (err) => {
+        this.toastr.warning("Từ chối đơn hàng thất bại !");
+      }
+    })
+  }
 
 }

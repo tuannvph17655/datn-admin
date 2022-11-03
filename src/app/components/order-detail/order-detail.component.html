@@ -118,14 +118,14 @@
                                         </div>
                                     </td>
                                     <td class="price" data-title="Giá" style="border: 0;padding: 35px 0;">
-                                        {{product.priceFmt}}₫
+                                        {{product.price}}₫
                                     </td>
                                     <td data-title="Số lượng" style="border: 0;padding: 35px 0;">
                                         {{product.qty}}
                                     </td>
                                     <td class="price numeric" data-title="Tổng"
                                         style="border: 0;padding: 37px 0;color: rgb(252, 175, 23); font-size: 16px;">
-                                        {{product.totalFmt}}₫
+                                        {{product.total}}₫
                                     </td>
                                 </tr>
                             </tbody>
@@ -162,8 +162,10 @@
                         </table>
                     </div>
                 </div>
-                <button class="back back-button btn btn-primary" data-bs-toggle="modal" data-bs-target="#verticalycentered">Xác nhận đơn</button>
-                <button class="back back-button btn btn-danger">Hủy đơn</button>
+
+                <button [hidden]="orderInfo.statusOrder === 'CANCEL'" class="back back-button btn btn-primary" data-bs-toggle="modal" data-bs-target="#verticalycentered">Xác nhận đơn</button>
+                <button [hidden]="orderInfo.statusOrder === 'CANCEL'" class="back back-button btn btn-danger" data-bs-toggle = "modal" data-bs-target="#cancelOrder" >Từ chối đơn hàng</button>
+                <button [hidden]="!(orderInfo.statusOrder === 'CANCEL') " class="back back-button btn btn-info" routerLink="/admin/cancel-orders" >Quay lại</button>
             </div>
         </div>
     </div>
@@ -177,11 +179,6 @@
                 <div class="modal-body">
                     <form [formGroup]="changOrderStatusForm">
                         <textarea class="form-control" id="noteStatus" rows="3" formControlName="note"></textarea>
-                        <div *ngIf="f['status'].touched && f['status'].invalid">
-                            <div *ngIf="f['status'].errors && f['status'].errors['required']">
-                              <p class="field__message">Vui lòng nhập họ tên</p>
-                            </div>
-                          </div>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -190,4 +187,23 @@
             </div>
         </div>
     </div>
+
+  <div class="modal fade" id="cancelOrder" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Ghi chú !</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="changOrderStatusForm">
+            <textarea class="form-control" id="noteStatus4CancelOrder" rows="3" formControlName="note"></textarea>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary"data-bs-dismiss="modal">Đóng</button>
+          <button type="button" class="btn btn-primary" (click)="rejectOrder()">Xác nhận từ chối đơn</button></div>
+      </div>
+    </div>
+  </div>
 </main>
