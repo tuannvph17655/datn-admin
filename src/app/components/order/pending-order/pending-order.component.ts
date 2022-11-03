@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Order} from "../../../models/Order";
 import {OrderService} from "../../../services/order.service";
 import {FilterOrderRequest} from "../../../models/FilterOrderRequest";
+import {OrderStatus} from "../../../models/OrderStatus";
 
 @Component({
   selector: 'app-pending-order',
@@ -17,7 +18,8 @@ export class PendingOrderComponent implements OnInit {
   totalPrice ?: String = '';
   payed ? : Boolean = false;
   statusValue ? : String = 'PENDING';
-  textSearch ? : String = ''
+  textSearch ? : String = '';
+  note ?: string = '';
   constructor(
     private orderService: OrderService,
   ) { }
@@ -38,6 +40,10 @@ export class PendingOrderComponent implements OnInit {
         console.log('error: ',err);
       }
     })
+  }
+
+  changOrderStatusToAccept(id ?: string) {
+    const orderStatus = new OrderStatus(id, )
   }
 
 
