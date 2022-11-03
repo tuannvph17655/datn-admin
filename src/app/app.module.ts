@@ -26,6 +26,8 @@ import { ColorComponent } from './components/color/color.component';
 import { SizeComponent } from './components/size/size.component';
 import { MaterialComponent } from './components/material/material.component';
 import { CancelOrderComponent } from './components/order/cancel-order/cancel-order.component';
+import { RejectOrderComponent } from './components/order/reject-order/reject-order.component';
+import { AcceptOrderComponent } from './components/order/accept-order/accept-order.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +48,8 @@ import { CancelOrderComponent } from './components/order/cancel-order/cancel-ord
     SizeComponent,
     MaterialComponent,
     CancelOrderComponent,
+    RejectOrderComponent,
+    AcceptOrderComponent,
   ],
     imports: [
         BrowserModule,
