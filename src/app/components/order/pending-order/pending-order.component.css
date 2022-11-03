@@ -2,3 +2,22 @@
     color: blue;
     cursor: pointer;
 }
+.icon-check {
+  color: white;
+
+}
+
+.btn-checkout,.btn-cancel {
+  border: none;
+}
+.btn-checkout:hover {
+  background-color: blue ; /* Green */
+  border: none;
+  color: white;
+}
+.btn-cancel:hover {
+  background-color: #0c4128 ; /* Green */
+  border: none;
+  color: white;
+}
+

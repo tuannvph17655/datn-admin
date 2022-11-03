@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import {FilterOrderRequest} from "../../../models/FilterOrderRequest";
 import {Order} from "../../../models/Order";
 import {OrderService} from "../../../services/order.service";
-import {FilterOrderRequest} from "../../../models/FilterOrderRequest";
-import {OrderStatus} from "../../../models/OrderStatus";
 
 @Component({
-  selector: 'app-pending-order',
-  templateUrl: './pending-order.component.html',
-  styleUrls: ['./pending-order.component.css']
+  selector: 'app-reject-order',
+  templateUrl: './reject-order.component.html',
+  styleUrls: ['./reject-order.component.css']
 })
-export class PendingOrderComponent implements OnInit {
+export class RejectOrderComponent implements OnInit {
   public orders : Order[] = [];
   reason : string = '';
   // orderId : string = '';
@@ -17,17 +16,15 @@ export class PendingOrderComponent implements OnInit {
   endDate ?: Date = new Date();
   totalPrice ?: String = '';
   payed ? : Boolean = false;
-  statusValue ? : String = 'PENDING';
+  statusValue ? : String = 'REJECT';
   textSearch ? : String = '';
   note ?: string = '';
   constructor(
-    private orderService: OrderService,
+    private orderService : OrderService
   ) { }
 
   ngOnInit(): void {
-    this.getListOrder();
   }
-
   getListOrder(){
     var filter = new FilterOrderRequest(this.startDate,this.endDate,this.totalPrice,this.payed, this.statusValue, this.textSearch);
     console.log("filter " +filter.textSearch);
@@ -41,10 +38,4 @@ export class PendingOrderComponent implements OnInit {
       }
     })
   }
-
-  changOrderStatusToAccept(id ?: string) {
-    const orderStatus = new OrderStatus(id, )
-  }
-
-
 }

@@ -30,8 +30,10 @@ export class OrderService {
     return this.http.get<any>(AUTH_API + `admin/order/listOrder?startDate=${filter.startDate}&endDate=${filter.endDate}&totalPrice=${filter.totalPrice}&payed=${filter.payed}&statusValue=${filter.statusValue}&textSearch=${filter.textSearch}`, requestOptions);
   }
 
-  // cancelOrder(orderCancel : CancelOrder):Observable<any> {
-  //   return this.http.post(orderCancel)<any>(AUTH_API +)
-  // }
-
+  changeStatus(orderCancel : CancelOrder):Observable<any> {
+    return this.http.post<any>(AUTH_API +`admin/order/change-status`, orderCancel, requestOptions);
+  }
+  rejectOrder(cancelOrder : CancelOrder):Observable<any> {
+    return this.http.post<any>(AUTH_API +`admin/order/reject-order`,cancelOrder,requestOptions);
+  }
 }

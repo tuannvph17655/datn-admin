@@ -54,7 +54,6 @@ export class SignInComponent implements OnInit {
         this.tokenStorage.saveRefreshToken(refreshToken);
         const decodedToken = this.helper.decodeToken(accessToken);
         this.roles = this.tokenStorage.getUser().role;
-        // if(this.roles === "ROLE_ADMIN" || this.roles === "ROLE_CUSTOMER") {
         console.log('decodedToken : ', decodedToken);
         this.tokenStorage.saveUser(decodedToken);
         console.log(this.roles);
@@ -63,14 +62,11 @@ export class SignInComponent implements OnInit {
         const commands = 'admin/pending-orders';
         console.log('res checkout', res);
         this.router.navigate([commands]);
-        // window.location.reload();
-      // }
-      //   window.localStorage.clear();
-      //   this.toastr.warning('Tài khoản không có quyền!');
       },
       err => {
         console.log('error', err);
         this.toastr.error('Đăng nhập thất bại !!');
+        window.location.reload();
       }
     )
   }

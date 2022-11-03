@@ -2,12 +2,11 @@ export interface ProductOrder {
     id ?: string,
     name ?: string,
     color ?: string,
-    size ?: string,  
+    size ?: string,
     image ?: string,
     material ?: string,
-    category ?: string,
-    priceFmt ? : string,
-    total ? : string,
+    price ?: string,
     qty ?: number,
-    totalFmt ?: string
+    category ?: string,
+    total ? : string,
 }

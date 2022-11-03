@@ -13,11 +13,13 @@ import { CategoryComponent } from './components/category/category.component';
 import { AuthGuard } from "./guards/auth.guard";
 import { OrderDetailComponent } from './components/order-detail/order-detail.component';
 import { CancelOrderComponent} from "./components/order/cancel-order/cancel-order.component";
+import {RejectOrderComponent} from "./components/order/reject-order/reject-order.component";
 
 const routes: Routes = [
   { path: '', component: SignInComponent },
   { path: 'admin/cancel-orders', component: CancelOrderComponent, canActivate: [AuthGuard] },
   { path: 'admin/pending-orders', component: PendingOrderComponent, canActivate: [AuthGuard] },
+  { path: 'admin/reject-orders', component: RejectOrderComponent, canActivate: [AuthGuard] },
   { path: 'tables-data', component: TablesDataComponent, canActivate: [AuthGuard] },
   { path: 'tabs', component: TabsComponent, canActivate: [AuthGuard] },
   { path: 'pages-error404', component: PagesError404Component, canActivate: [AuthGuard] },
