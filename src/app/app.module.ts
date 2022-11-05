@@ -28,6 +28,8 @@ import { MaterialComponent } from './components/material/material.component';
 import { CancelOrderComponent } from './components/order/cancel-order/cancel-order.component';
 import { RejectOrderComponent } from './components/order/reject-order/reject-order.component';
 import { AcceptOrderComponent } from './components/order/accept-order/accept-order.component';
+import { ShippingOrderComponent } from './components/order/shipping-order/shipping-order.component';
+import { ReceivedOrderComponent } from './components/order/received-order/received-order.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +52,8 @@ import { AcceptOrderComponent } from './components/order/accept-order/accept-ord
     CancelOrderComponent,
     RejectOrderComponent,
     AcceptOrderComponent,
+    ShippingOrderComponent,
+    ReceivedOrderComponent,
   ],
     imports: [
         BrowserModule,
