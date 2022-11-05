@@ -25,7 +25,6 @@
                            <th>Địa chỉ</th>
                            <th>Giá trị đơn hàng</th>
                            <th>Trạng thái thanh toán</th>
-                           <th>Trạng thái đơn hàng</th>
                             <th>Thao tác</th>
                         </tr>
                      </thead>
@@ -37,7 +36,6 @@
                        <td>{{order.address}}</td>
                        <td class="price" style="color:#fcaf17;" >{{order.totalPrice}}₫</td>
                        <td>{{order?.payed ? 'Đã thanh toán' : 'Chưa thanh toán' }}</td>
-                       <td>{{order.statusValue}}</td>
                        <td>
                          <button class="btn btn-danger btn-cancel"><span><i class="bi bi-x-circle-fill icon-check"></i></span></button>
                          <button class="btn btn-info btn-checkout"><span><i class="bi bi-check-square-fill icon-check "></i></span></button>

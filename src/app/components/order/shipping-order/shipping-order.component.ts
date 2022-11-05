@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import {OrderService} from "../../../services/order.service";
-import {Order} from "../../../models/Order";
 import {FilterOrderRequest} from "../../../models/FilterOrderRequest";
+import {Order} from "../../../models/Order";
+import {OrderService} from "../../../services/order.service";
 
 @Component({
-  selector: 'app-accept-order',
-  templateUrl: './accept-order.component.html',
-  styleUrls: ['./accept-order.component.css']
+  selector: 'app-shipping-order',
+  templateUrl: './shipping-order.component.html',
+  styleUrls: ['./shipping-order.component.css']
 })
-export class AcceptOrderComponent implements OnInit {
+export class ShippingOrderComponent implements OnInit {
   public orders : Order[] = [];
   reason : string = '';
   // orderId : string = '';
@@ -16,11 +16,9 @@ export class AcceptOrderComponent implements OnInit {
   endDate ?: Date = new Date();
   totalPrice ?: String = '';
   payed ? : Boolean = false;
-  statusValue ? : String = 'ACCEPT';
+  statusValue ? : String = 'SHIPPING';
   textSearch ? : String = ''
-  constructor(
-    private orderService : OrderService
-  ) { }
+  constructor(private orderService : OrderService) { }
 
   ngOnInit(): void {
     this.getListOrder();
@@ -39,7 +37,5 @@ export class AcceptOrderComponent implements OnInit {
       }
     })
   }
-
-
 
 }
