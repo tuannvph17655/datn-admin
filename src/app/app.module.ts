@@ -72,6 +72,7 @@ import { ReceivedOrderComponent } from './components/order/received-order/receiv
             allowedDomains: ['localhost:8888'],
           }
         }),
+      ToastrModule.forRoot(),
 
     ],
   providers: [],

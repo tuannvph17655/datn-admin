@@ -23,22 +23,22 @@ export class AcceptOrderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getListOrder();
+    // this.getListOrder();
   }
 
-  getListOrder(){
-    var filter = new FilterOrderRequest(this.startDate,this.endDate,this.totalPrice,this.payed, this.statusValue, this.textSearch);
-    console.log("filter " +filter.textSearch);
-    this.orderService.getListOrder(filter).subscribe({
-      next: (res: any) => {
-        this.orders = res.data.orderRes;
-        console.log("orders" + this.orders);
-        console.log(this.orders)
-      },error: (err) => {
-        console.log('error: ',err);
-      }
-    })
-  }
+  // getListOrder(){
+  //   var filter = new FilterOrderRequest(this.startDate,this.endDate,this.totalPrice,this.payed, this.statusValue, this.textSearch);
+  //   console.log("filter " +filter.textSearch);
+  //   this.orderService.getListOrder(filter).subscribe({
+  //     next: (res: any) => {
+  //       this.orders = res.data.orderRes;
+  //       console.log("orders" + this.orders);
+  //       console.log(this.orders)
+  //     },error: (err) => {
+  //       console.log('error: ',err);
+  //     }
+  //   })
+  // }
 
 
 
