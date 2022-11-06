@@ -17,10 +17,9 @@
             <div id="search-container">
               <form action="" [formGroup]="filterOrderForm">
                 <input type="input" formControlName ="textSearch" placeholder="Tìm đơn hàng theo mã" >
-                <button id="search" (click)="getListOrder()">Tìm kiếm</button>
                 <span class="span_startDate">Từ ngày <input formControlName = "startDate" type="date" id="startDate"></span>
                 <span class="span_endDate">Đến ngày <input  formControlName = "endDate" type="date" id="endDate" ></span>
-
+                <button id="search" (click)="getListOrder()">Tìm kiếm</button>
               </form>
             </div>
             <table class="table">
@@ -33,7 +32,7 @@
                 <th>Mã đơn</th>
                 <th>Ngày mua</th>
                 <th>Địa chỉ</th>
-                <th>Giá trị đơn hàng</th>
+                <th>Tổng tiền</th>
                 <th>Thanh toán</th>
                 <th>Thao tác</th>
               </tr>
@@ -49,9 +48,9 @@
                 <td class="price" style="color:#fcaf17;">{{order.totalPrice}}₫</td>
                 <td>{{order?.payed ? 'Đã thanh toán' : 'Chưa thanh toán' }}</td>
                 <td>
-                  <button class="btn btn-danger btn-cancel" style="margin-right: 5px; margin-bottom: 5px" (click)="rejectOrder()" ><i class="bi bi-x-circle-fill icon-check"></i>
+                  <button class="btn btn-danger btn-cancel" data-bs-toggle="modal" data-bs-target="#modal_accept " style="margin-right: 5px; margin-bottom: 5px" (click)="fillDataToFormControl(order.orderId)" ><i class="bi bi-x-circle-fill icon-check"></i>
                   </button>
-                  <button class="btn btn-info btn-checkout" data-bs-toggle="modal" data-bs-target="#modal_accept" (click)="fillDataToFormControl(order.orderId)" ><i class="bi bi-check-square-fill icon-check "></i></button>
+                  <button class="btn btn-info btn-checkout" data-bs-toggle="modal" data-bs-target="#modal_reject" (click)="fillDataToFormControl(order.orderId)" ><i class="bi bi-check-square-fill icon-check "></i></button>
                 </td>
               </tr>
               </tbody>
@@ -62,6 +61,7 @@
     </div>
   </section>
 
+<!--  change status-->
   <div class="modal fade" id="modal_accept" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
@@ -77,6 +77,26 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary"data-bs-dismiss="modal">Đóng</button>
           <button type="button" class="btn btn-primary" (click)="changOrderStatusToAccept()">Xác nhận đơn</button></div>
+      </div>
+    </div>
+  </div>
+
+<!--Reject Order-->
+  <div class="modal fade" id="modal_reject" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Ghi chú !</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="changOrderStatusToAcceptForm">
+            <textarea class="form-control" id="noteStatusReject" rows="3" formControlName="note"></textarea>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary"data-bs-dismiss="modal">Đóng</button>
+          <button type="button" class="btn btn-primary" (click)="rejectOrder()">Từ chối đơn hàng</button></div>
       </div>
     </div>
   </div>
