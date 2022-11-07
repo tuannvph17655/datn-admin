@@ -30,7 +30,6 @@ export class AcceptOrderComponent implements OnInit {
     id: new FormControl(''),
     note: new FormControl(''),
     status: new FormControl(''),
-
   });
 
   constructor(
@@ -61,7 +60,7 @@ export class AcceptOrderComponent implements OnInit {
     this.changOrderStatusForm.patchValue({
       id: data,
       note: '',
-      status: 'SHIPPING'
+      status: 'ACCEPT'
     });
   }
   changOrderStatusToShipping() {
