@@ -1,6 +1,6 @@
 export class CancelOrder {
   public orderId ?: string;
-  public  note ?: string;
+  public note ?: string;
 
   constructor(
     orderId ?:string,

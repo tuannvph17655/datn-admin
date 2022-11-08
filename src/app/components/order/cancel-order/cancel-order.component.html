@@ -15,26 +15,36 @@
       <div class="col-lg-12">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Đơn hàng bị hủy</h5>
+            <div id="search-container">
+              <form action="" [formGroup]="filterOrderForm">
+                <input type="search" formControlName ="textSearch" placeholder="Tìm đơn hàng theo mã" >
+                <span class="span_startDate">Từ ngày <input formControlName = "startDate" type="date" id="startDate"></span>
+                <span class="span_endDate">Đến ngày <input  formControlName = "endDate" type="date" id="endDate" ></span>
+                <button id="search" (click)="getListOrder()">Tìm kiếm</button>
+              </form>
+            </div>
             <table class="table">
               <thead>
               <tr>
-                <th><input type="checkbox">Chọn nhiều</th>
+                <th><label class="toggle" for="myToggle">
+                  <input class="toggle__input" name="" type="checkbox" id="myToggle">
+                  <div class="toggle__fill"></div>
+                </label></th>
                 <th>Mã đơn</th>
                 <th>Ngày mua</th>
                 <th>Địa chỉ</th>
-                <th>Giá trị đơn hàng</th>
-                <th>Trạng thái thanh toán</th>
+                <th>Tổng tiền</th>
+                <th>Thanh toán</th>
               </tr>
               </thead>
               <tbody>
               <tr  *ngFor="let order of orders">
-                <td><input type="checkbox"></td>
+                <th><input type="checkbox"></th>
                 <td class="orderCode" ><a [routerLink]="['/order-detail/' + order.orderId]">{{order.orderCode}}</a></td>
                 <td>{{order.createDate}}</td>
                 <td>{{order.address}}</td>
                 <td class="price" style="color:#fcaf17;" >{{order.totalPrice}}₫</td>
-                <td>{{order.payed}}</td>
+                <td>{{order.payed ? 'Đã thanh toán' : 'Chưa thanh toán'}}</td>
               </tr>
               </tbody>
             </table>
