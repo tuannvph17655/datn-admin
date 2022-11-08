@@ -165,23 +165,33 @@
           </div>
         </div>
         <div>
-          <button [hidden]="orderInfo.statusOrder === 'CANCEL'" class="back back-button btn btn-primary"
-                  data-bs-toggle="modal" data-bs-target="#verticalycentered">Giao thành công
+          <button
+            [hidden]="orderInfo.statusOrder === 'CANCEL' || orderInfo.statusOrder === 'PENDING' || orderInfo.statusOrder === 'ACCEPT'
+            || orderInfo.statusOrder === 'REJECT' "
+            class="back back-button btn btn-primary"
+            data-bs-toggle="modal" data-bs-target="#verticalycentered">Giao thành công
           </button>
-          <button [hidden]="orderInfo.statusOrder === 'CANCEL'" class="back back-button btn btn-primary"
+          <button [hidden]="orderInfo.statusOrder === 'CANCEL' || orderInfo.statusOrder === 'REJECT' " class="back back-button btn btn-primary"
                   data-bs-toggle="modal" data-bs-target="#verticalycentered">Giao hàng
           </button>
-          <button [hidden]="orderInfo.statusOrder === 'CANCEL'" class="back back-button btn btn-primary"
+          <button [hidden]="orderInfo.statusOrder === 'CANCEL' || orderInfo.statusOrder === 'ACCEPT' || orderInfo.statusOrder === 'REJECT' "
+                  class="back back-button btn btn-primary"
                   data-bs-toggle="modal" data-bs-target="#verticalycentered">Xác nhận
           </button>
-          <button [hidden]="orderInfo.statusOrder === 'CANCEL'" class="back back-button btn btn-danger"
+          <button [hidden]="orderInfo.statusOrder === 'CANCEL' || orderInfo.statusOrder === 'REJECT'
+           " class="back back-button btn btn-danger"
                   data-bs-toggle="modal" data-bs-target="#cancelOrder">Từ chối
           </button>
           <button [hidden]="!(orderInfo.statusOrder === 'CANCEL') " class="back back-button btn btn-info"
                   routerLink="/admin/cancel-orders">Quay lại
           </button>
-          <button [hidden]="(orderInfo.statusOrder === 'CANCEL') " class="back back-button btn btn-info"
-                  routerLink="/admin/cancel-orders">Giao không thành công
+          <button
+            [hidden]="(orderInfo.statusOrder === 'CANCEL' ||
+             orderInfo.statusOrder === 'PENDING' ||
+              orderInfo.statusOrder === 'ACCEPT' ||
+              orderInfo.statusOrder === 'REJECT' ) "
+            class="back back-button btn btn-info"
+            routerLink="/admin/cancel-orders">Giao không thành công
           </button>
         </div>
       </div>
