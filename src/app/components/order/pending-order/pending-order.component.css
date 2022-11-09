@@ -25,7 +25,7 @@
 }
 #search-container input {
   background-color: transparent;
-  width: 230px;
+  width: 150px;
   border: none;
   border-bottom: 2px solid #110f29;
   padding : 0.5em 0.3em;
@@ -90,5 +90,11 @@
 
 .toggle__input:checked ~ .toggle__fill::after {
   transform: translateX(var(--height));
+}
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  margin: 10px;
 }
 
