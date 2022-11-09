@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Category } from 'src/app/models/Category';
-import { CategoryService } from 'src/app/services/category.service';
+import {Component, OnInit} from '@angular/core';
+import {CategoryReq, CategoryFilter, Category} from 'src/app/models/CategoryReq';
+import {CategoryService} from 'src/app/services/category.service';
+import {FormControl, FormGroup, RequiredValidator, Validators} from "@angular/forms";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-category',
@@ -8,51 +10,80 @@ import { CategoryService } from 'src/app/services/category.service';
   styleUrls: ['./category.component.css']
 })
 export class CategoryComponent implements OnInit {
-  public categories : Category [] = [];
-  public category !: Category;
+
+  createOrUpdateCategoryForm = new FormGroup({
+    id : new FormControl('', ),
+    name: new FormControl('', [Validators.required]),
+    description: new FormControl('', [Validators.required])
+  })
+
+  public categories: Category[] = [];
+  public page ? = Number;
+  public pageSize ? = Number;
+  req: any = {
+    "id": "",
+    "active": "",
+    "textSearch": "",
+    "pageReq": {
+      "page": 0,
+      "pageSize": 15,
+      "sortField": "",
+      "sortDirection": ""
+    }
+  }
+
   constructor(
-    private categoryService : CategoryService
-  ) { }
+    private categoryService: CategoryService,
+    private toastr: ToastrService) {
+  }
 
   ngOnInit(): void {
-    this.getListCategory();
+    this.getListCategory(this.req);
   }
 
-  private getListCategory() {
-    this.categoryService.getListCategory().subscribe({
-      next : (response: any ) => {
-        this.categories = response.content;
-        console.log(this.categories);
+  createCategory() {
+    const  categoryReq =  new CategoryReq(this.createOrUpdateCategoryForm.value.id || '',this.createOrUpdateCategoryForm.value.name || '', this.createOrUpdateCategoryForm.value.description || '')
+    console.log("categoryReq : ",categoryReq );
+    this.categoryService.createCategory(categoryReq).subscribe({
+      next: (res: any) => {
+        this.toastr.success("Tạo danh mục thành công !");
+        this.getListCategory(this.req);
+      }, error: (err: any) => {
+        console.log("Err : " ,err)
+        this.toastr.error("Tạo danh mục thất bại !")
       }
     })
   }
 
-  public getCategory(id : BigInt) {
-    this.categoryService.getCategory(id).subscribe({
-      next : (res:any) => {
-        console.log("category detail" , res);
-        this.category = res.data;
-      },error: (err) => {
-        console.log('errr', err)
+  getListCategory(req: any) {
+    this.categoryService.getListCategory(req).subscribe({
+      next: (response: any) => {
+        this.categories = response.data;
+        this.page = response.page;
+        this.pageSize = response.pageSize;
+        console.log("resposne : ", response);
       }
     })
   }
 
-  public onOpenMoal(employee : any, mode : string): void {
-    const container = document.getElementById('main-container');
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.style.display = 'none';
-    button.setAttribute('data-bs-toggle','modal');
-    if(mode === 'add') {
-      button.setAttribute('data-bs-target','addCategoryModal');
-    }
-    if(mode === 'edit') {
-      button.setAttribute('data-target','updateCategoryModal');
-    }
-    if(mode === 'delete') {
-      button.setAttribute('data-target','deleteCategoryModal');
-    }
+  fillDataToForm(data : any) {
+    this.createOrUpdateCategoryForm.patchValue({
+      id: data.id,
+      name: data.name,
+      description:  data.des,
+    })
+  }
+
+  deleteCategory(data : any) {
+    var req = new CategoryReq(data.id, data.name, data.description);
+    this.categoryService.deleteCategory(req).subscribe({
+      next : (req : any) => {
+      this.toastr.success("Xóa thành công !");
+      this.getListCategory(this.req);
+      } , error : (err : any) =>{
+        this.toastr.error("Xóa thất bại");
+      }
+    })
   }
 
 }

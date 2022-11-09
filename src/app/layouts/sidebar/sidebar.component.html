@@ -8,6 +8,7 @@
              <li> <a routerLink="/admin/accept-orders"> <i class="bi bi-circle"></i><span>Đã xác nhận</span> </a></li>
              <li> <a routerLink="/admin/shipping-orders"> <i class="bi bi-circle"></i><span>Đang giao hàng</span> </a></li>
             <li> <a routerLink="/admin/received-orders"> <i class="bi bi-circle"></i><span>Giao hàng thành công</span> </a></li>
+            <li> <a routerLink="/admin/received-orders"> <i class="bi bi-circle"></i><span>Giao hàng thất bại</span> </a></li>
             <li> <a routerLink="/admin/cancel-orders"> <i class="bi bi-circle"></i><span>Đơn hàng đã bị hủy</span> </a></li>
             <li> <a routerLink="/admin/reject-orders"> <i class="bi bi-circle"></i><span>Đơn hàng đã bị từ chối</span> </a></li>
           </ul>
@@ -16,15 +17,24 @@
           <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#"> <i class="bi bi-journal-text"></i><span>Quản lý sự kiện</span><i class="bi bi-chevron-down ms-auto"></i> </a>
           <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
             <li> <a routerLink="/events" > <i class="bi bi-circle"></i> <span>Sự kiện</span></a></li>
-            <li> <a routerLink="/vouchers" > <i class="bi bi-circle"></i> <span>Voucher</span></a></li>
+            <li> <a routerLink="/vouchers" > <i class="bi bi-circle"></i> <span>Giảm giá</span></a></li>
           </ul>
        </li>
        <li class="nav-item">
-          <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#"> <i class="bi bi-layout-text-window-reverse"></i><span>Quản lý sản phẩm</span><i class="bi bi-chevron-down ms-auto"></i> </a>
+          <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="#"> <i class="bi bi-layout-text-window-reverse"></i><span>Quản lý thuộc tính</span><i class="bi bi-chevron-down ms-auto"></i> </a>
           <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
              <li> <a routerLink="/category" > <i class="bi bi-circle"></i><span>Danh mục</span></a></li>
-             <li> <a routerLink="/product-options"> <i class="bi bi-circle"></i><span>Product Options</span></a></li>
+            <li> <a routerLink="/category" > <i class="bi bi-circle"></i><span>Chất liệu</span></a></li>
+            <li> <a routerLink="/category" > <i class="bi bi-circle"></i><span>Màu sắc</span></a></li>
+            <li> <a routerLink="/category" > <i class="bi bi-circle"></i><span>Kích cỡ</span></a></li>
           </ul>
        </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#tabs-nav" data-bs-toggle="collapse" href="#"> <i class="bi bi-layout-text-window-reverse"></i><span>Quản lý Sản phẩm</span><i class="bi bi-chevron-down ms-auto"></i> </a>
+        <ul id="tabs-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li> <a routerLink="/category" > <i class="bi bi-circle"></i><span>Sản phẩm</span></a></li>
+          <li> <a routerLink="/category" > <i class="bi bi-circle"></i><span>Phân loại sản phẩm</span></a></li>
+        </ul>
+      </li>
     </ul>
  </aside>

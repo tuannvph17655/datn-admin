@@ -1,73 +1,92 @@
 <main id="main" class="main">
-    <div class="pagetitle">
-        <h1>Category</h1>
-        <nav>
-           <ol class="breadcrumb">
-              <li class="breadcrumb-item"><a routerLink="/">Trang chủ</a></li>
-              <li class="breadcrumb-item">Sản phẩm</li>
-              <li class="breadcrumb-item active">Danh mục</li>
-           </ol>
-        </nav>
-     </div>
-  <div class="card">
-    <div class="card-body">
-      <div class="row">
-        <div class="col-md-3">
-          <form>
-            <div class="mb-4">
-              <label for="product_name" class="form-label">Tên danh mục</label>
-              <input type="text" placeholder="Nhập tên danh mục" class="form-control" id="product_name" />
+  <div class="pagetitle">
+    <h1>Danh mục</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/">Trang chủ</a></li>
+        <li class="breadcrumb-item">Sản phẩm</li>
+        <li class="breadcrumb-item active">Danh mục</li>
+      </ol>
+    </nav>
+  </div>
+  <div class="container-xl" id="main-container">
+    <div class="table-responsive">
+      <div class="table-wrapper">
+        <div class="table-title">
+          <div class="row">
+            <div class="col-sm-8"><h2>Quản lý <b>danh mục</b></h2></div>
+            <div class="col-sm-4">
+              <a type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addOrEditCategoryModal">Thêm
+                mới</a>
             </div>
-            <div class="mb-4">
-              <label class="form-label">Mô tả danh mục</label>
-              <textarea placeholder="Mô tả" class="form-control"></textarea>
-            </div>
-            <div class="d-grid">
-              <button class="btn btn-primary">Tạo danh mục</button>
-            </div>
-          </form>
-        </div>
-        <div class="col-md-9">
-          <div class="table-responsive">
-            <table class="table table-hover">
-              <thead>
-              <tr>
-                <th class="text-center">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" />
-                  </div>
-                </th>
-                <th>ID</th>
-                <th>Tên danh mục</th>
-                <th>Mô tả</th>
-                <th>Trạng thái</th>
-                <th>Thao tác</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr>
-                <td class="text-center">
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" />
-                  </div>
-                </td>
-                <td>21</td>
-                <td><b>Cake & Milk</b></td>
-                <td>Cake & Milk</td>
-                <td>/cake</td>
-                <td class="col-action">
-                  <a class="action-category action-edit" data-bs-toggle ="modal" data-bs-target="#modal_shipping" ><i class="bi bi-pencil-square"></i></a>
-                  <a class="action-category action-delete" data-bs-toggle="modal" data-bs-target="#modal_reject"  ><i class="bi bi-x-circle-fill icon-check"></i></a>
-                </td>
-              </tr>
-              </tbody>
-            </table>
           </div>
         </div>
-        <!-- .col// -->
+        <table class="table table-striped table-hover table-bordered">
+          <thead>
+          <tr>
+            <th>Tên danh mục</th>
+            <th>Trạng thái</th>
+            <th>Thao tác</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let category of categories">
+            <td>{{ category.name }}</td>
+            <td>{{ category.active ? 'Hoạt động' : 'Không hoạt động' }}</td>
+            <td>
+              <a (click)="fillDataToForm(category)" type="button" data-bs-toggle="modal" data-bs-target="#addOrEditCategoryModal" class="view" title="Xem chi tiết"
+                 data-toggle="tooltip"><i class="bi bi-pen-fill"></i></a>
+              <a class="edit" style="cursor: pointer" (click)="deleteCategory(category)" title="Xóa" data-toggle="tooltip"><i class="bi bi-trash-fill"></i></a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <div class="clearfix">
+          <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+          <ul class="pagination">
+            <li class="page-item disabled"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
+            <li class="page-item"><a href="#" class="page-link">1</a></li>
+            <li class="page-item"><a href="#" class="page-link">2</a></li>
+            <li class="page-item active"><a href="#" class="page-link">3</a></li>
+            <li class="page-item"><a href="#" class="page-link">4</a></li>
+            <li class="page-item"><a href="#" class="page-link">5</a></li>
+            <li class="page-item"><a href="#" class="page-link"><i class="fa fa-angle-double-right"></i></a></li>
+          </ul>
+        </div>
+
+
       </div>
-      <!-- .row // -->
     </div>
-    <!-- card body .// -->
+    <!-- create modal -->
+    <div class="modal fade" id="addOrEditCategoryModal" tabindex="-1" data-bs-backdrop="false">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Danh mục</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form [formGroup]="createOrUpdateCategoryForm">
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                  <label for="input_category_name">Tên danh mục</label>
+                  <input type="input" formControlName = "name" class="form-control" id="input_category_name" placeholder="Nhập tên danh mục">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="input_des_category">Mô tả</label>
+                <textarea type="text" class="form-control" id="input_des_category" rows="5"
+                          formControlName = "description"
+                          placeholder="Mô tả danh mục"></textarea>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            <button type="button" class="btn btn-primary"(click)="createCategory()" >Xác nhận</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </main>
