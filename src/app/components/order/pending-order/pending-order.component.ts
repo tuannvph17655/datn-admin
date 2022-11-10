@@ -32,6 +32,8 @@ export class PendingOrderComponent implements OnInit {
     status: new FormControl('')
   });
 
+  checkAll: any;
+
   constructor(
     private orderService: OrderService,
     private toastr: ToastrService
@@ -98,5 +100,19 @@ export class PendingOrderComponent implements OnInit {
   }
 
   hideModal() {
+  }
+
+  onItemSelectSpecialType() {
+    setTimeout(() => {
+      const listActive = this.orders.filter(r => r.isActive);
+      this.checkAll = listActive.length === this.orders.length;
+    }, 100);
+  }
+
+  selectAll() {
+    this.orders.forEach((item) => {
+        item.isActive = this.checkAll;
+    });
+    this.onItemSelectSpecialType();
   }
 }
