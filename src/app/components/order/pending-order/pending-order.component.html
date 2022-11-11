@@ -16,18 +16,24 @@
           <div class="card-body">
             <div id="search-container">
               <form action="" [formGroup]="filterOrderForm">
-                <input type="input" formControlName ="textSearch" placeholder="Tìm đơn hàng theo mã" >
-                <span class="span_startDate">Từ ngày <input formControlName = "startDate" type="date" id="startDate"></span>
-                <span class="span_endDate">Đến ngày <input  formControlName = "endDate" type="date" id="endDate" ></span>
+                <input type="input" formControlName ="textSearch" placeholder="Search" >
+                <span class="span_startDate">Từ<input formControlName = "startDate" type="date" id="startDate"></span>
+                <span class="span_endDate">Đến<input  formControlName = "endDate" type="date" id="endDate" ></span>
                 <button id="search" (click)="getListOrder()">Tìm kiếm</button>
-              </form>
+                <div style="float: right" *ngIf="ordersActive.length > 0">
+                  <button class="btn btn-info btn-checkout" data-bs-toggle="modal" data-bs-target="#modal_accept " style="margin-right: 5px; margin-bottom: 5px; background-color:green" (click)="fillDataToFormControl()" ><i class="bi bi-check-square-fill icon-check"> Xác nhận đơn</i>
+                  </button>
+                  <button class="btn btn-danger btn-cancel" data-bs-toggle="modal" data-bs-target="#modal_reject" style="margin-right: 5px; margin-bottom: 5px; background-color:red" (click)="fillDataToFormControl()"><i class="bi bi-x-circle-fill icon-check"> Hủy đơn</i></button>
+                </div>
+                </form>
+
             </div>
             <table class="table">
               <thead>
               <tr>
-                <th><label class="toggle" for="myToggle">
-                  <input class="toggle__input" name="" type="checkbox" id="myToggle">
-                  <div class="toggle__fill"></div>
+                <th><label class="toggle">
+                  <input class="checkbox" type="checkbox" [(ngModel)]="checkAll"
+                         (change)="selectAll()">
                 </label></th>
                 <th>Mã đơn</th>
                 <th>Ngày mua</th>
@@ -39,8 +45,10 @@
               </thead>
               <tbody>
               <tr *ngFor="let order of orders">
-                <th><label class="toggle" for="myToggle">
-                  <input  type="checkbox">
+                <th><label class="toggle">
+                  <input class="checkbox" type="checkbox"
+                         [(ngModel)]="order.isActive"
+                         (ngModelChange)="onItemSelectSpecialType()">
                 </label></th>
                 <td class="orderCode"><a [routerLink]="['/order-detail/' + order.orderId]">{{order.orderCode}}</a></td>
                 <td>{{order.createDate}}</td>
@@ -48,9 +56,9 @@
                 <td class="price" style="color:#fcaf17;">{{order.totalPrice}}₫</td>
                 <td>{{order?.payed ? 'Đã thanh toán' : 'Chưa thanh toán' }}</td>
                 <td>
-                  <button class="btn btn-danger btn-cancel" data-bs-toggle="modal" data-bs-target="#modal_accept " style="margin-right: 5px; margin-bottom: 5px" (click)="fillDataToFormControl(order.orderId)" ><i class="bi bi-x-circle-fill icon-check"></i>
+                  <button class="btn btn-info btn-checkout tooltip-test" title="Xác nhận đơn hàng" data-bs-toggle="modal" data-bs-target="#modal_accept " style="margin-right: 5px; margin-bottom: 5px; background-color:green " (click)="fillDataToFormControl(order.orderId)" ><i class="bi bi-check-square-fill icon-check"></i>
                   </button>
-                  <button class="btn btn-info btn-checkout" data-bs-toggle="modal" data-bs-target="#modal_reject" (click)="fillDataToFormControl(order.orderId)" ><i class="bi bi-check-square-fill icon-check "></i></button>
+                  <button class="btn btn-danger btn-cancel tooltip-test" title="Hủy đơn hàng" data-bs-toggle="modal" data-bs-target="#modal_reject" style="margin-right: 5px; margin-bottom: 5px; background-color:red " (click)="fillDataToFormControl(order.orderId)" ><i class="bi bi-x-circle-fill icon-check"></i></button>
                 </td>
               </tr>
               </tbody>
@@ -66,17 +74,17 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Ghi chú !</h5>
+          <h5 class="modal-title">Vui lòng xác nhận !</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-          <form [formGroup]="changOrderStatusToAcceptForm">
-            <textarea class="form-control" id="noteStatus" rows="3" formControlName="note"></textarea>
-          </form>
-        </div>
+<!--        <div class="modal-body">-->
+<!--          <form [formGroup]="changOrderStatusToAcceptForm">-->
+<!--            <textarea class="form-control" id="noteStatus" rows="3" formControlName="note"></textarea>-->
+<!--          </form>-->
+<!--        </div>-->
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary"data-bs-dismiss="modal">Đóng</button>
-          <button type="button" class="btn btn-primary" (click)="changOrderStatusToAccept()">Xác nhận đơn</button></div>
+          <button type="button" style="background-color:green" class="btn btn-primary" (click)="changOrderStatusToAccept()" data-bs-dismiss="modal">Xác nhận đơn</button></div>
       </div>
     </div>
   </div>
@@ -86,17 +94,17 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Ghi chú !</h5>
+          <h5 class="modal-title">Vui lòng xác nhận !</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-          <form [formGroup]="changOrderStatusToAcceptForm">
-            <textarea class="form-control" id="noteStatusReject" rows="3" formControlName="note"></textarea>
-          </form>
-        </div>
+<!--        <div class="modal-body">-->
+<!--          <form [formGroup]="changOrderStatusToAcceptForm">-->
+<!--            <textarea class="form-control" id="noteStatusReject" rows="3" formControlName="note"></textarea>-->
+<!--          </form>-->
+<!--        </div>-->
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary"data-bs-dismiss="modal">Đóng</button>
-          <button type="button" class="btn btn-primary" (click)="rejectOrder()">Từ chối đơn hàng</button></div>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+          <button type="button" style="background-color:red" class="btn btn-primary" (click)="rejectOrder()" data-bs-dismiss="modal">Từ chối đơn hàng</button></div>
       </div>
     </div>
   </div>
