@@ -14,7 +14,6 @@ import {CancelOrder} from "../../../models/CancelOrder";
 })
 export class PendingOrderComponent implements OnInit {
   public orders: Order[] = [];
-  public ordersActive: Order[] = [];
   public totalPrice = '';
   public payed = '';
   public statusValue = 'PENDING';
@@ -23,8 +22,8 @@ export class PendingOrderComponent implements OnInit {
     textSearch: new FormControl(''),
     startDate: new FormControl(''),
     endDate: new FormControl(''),
-    page: new FormControl('0'),
-    size: new FormControl('100')
+    page : new FormControl('0'),
+    size : new FormControl('100')
   });
 
   changOrderStatusToAcceptForm = new FormGroup({
@@ -32,8 +31,6 @@ export class PendingOrderComponent implements OnInit {
     note: new FormControl(''),
     status: new FormControl('')
   });
-
-  checkAll: any;
 
   constructor(
     private orderService: OrderService,
@@ -52,7 +49,7 @@ export class PendingOrderComponent implements OnInit {
       , this.payed
       , this.statusValue,
       this.filterOrderForm.value.textSearch || ''
-      , this.filterOrderForm.value.page || '0', this.filterOrderForm.value.size || '100');
+      ,this.filterOrderForm.value.page || '0',this.filterOrderForm.value.size || '100');
 
     this.orderService.getListOrder(filter).subscribe({
       next: (res: any) => {
@@ -66,15 +63,11 @@ export class PendingOrderComponent implements OnInit {
   }
 
   fillDataToFormControl(data ?: string) {
-    if (data) {
-      this.changOrderStatusToAcceptForm.patchValue({
-        id: data
-      });
-    } else {
-      this.changOrderStatusToAcceptForm.patchValue({
-        id: this.ordersActive.map(value => value.orderId).join(",")
-      });
-    }
+    this.changOrderStatusToAcceptForm.patchValue({
+      id: data,
+      note: '',
+      status: 'ACCEPT'
+    });
   }
 
   changOrderStatusToAccept() {
@@ -83,6 +76,7 @@ export class PendingOrderComponent implements OnInit {
     this.orderService.changeStatus(orderStatus).subscribe({
       next: (res: any) => {
         this.toastr.success('Xác nhận đơn hàng thành công !');
+        this.hideModal();
         this.getListOrder()
       }, error: (err) => {
         this.toastr.error('Xác nhận đơn hàng thất bại !');
@@ -91,10 +85,11 @@ export class PendingOrderComponent implements OnInit {
   }
 
   rejectOrder() {
-    const cancelOrder = new CancelOrder(this.changOrderStatusToAcceptForm.value.id || '', this.changOrderStatusToAcceptForm.value.note || '');
+    const cancelOrder = new CancelOrder(this.changOrderStatusToAcceptForm.value.id || '',  this.changOrderStatusToAcceptForm.value.note || '');
     this.orderService.rejectOrder(cancelOrder).subscribe({
       next: (res: any) => {
         this.toastr.success('Từ chối đơn hàng thành công !');
+        this.hideModal();
         this.getListOrder()
       }, error: (err) => {
         this.toastr.error('Từ chối đơn hàng thất bại !');
@@ -102,15 +97,6 @@ export class PendingOrderComponent implements OnInit {
     })
   }
 
-  onItemSelectSpecialType() {
-    this.ordersActive = this.orders.filter(r => r.isActive);
-    this.checkAll = this.ordersActive.length === this.orders.length;
-  }
-
-  selectAll() {
-    this.orders.forEach((item) => {
-      item.isActive = this.checkAll;
-    });
-    this.onItemSelectSpecialType();
+  hideModal() {
   }
 }

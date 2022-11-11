@@ -1,5 +1,4 @@
 export interface Order {
-  isActive: boolean;
   orderId ?: string,
   orderCode ?: string,
   status ?: string,
