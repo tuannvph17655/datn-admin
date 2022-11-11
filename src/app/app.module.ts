@@ -12,7 +12,6 @@ import { TablesDataComponent } from './components/tables-data/tables-data.compon
 import { UsersProfileComponent } from './pages/users-profile/users-profile.component';
 import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { PagesError404Component } from './pages/pages-error404/pages-error404.component';
-import { SizesComponent } from './components/sizes/sizes.component';
 import { EventComponent } from './components/event/event.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CategoryComponent } from './components/category/category.component';
@@ -42,7 +41,6 @@ import { ReceivedOrderComponent } from './components/order/received-order/receiv
     UsersProfileComponent,
     SignInComponent,
     PagesError404Component,
-    SizesComponent,
     EventComponent,
     CategoryComponent,
     OrderDetailComponent,
