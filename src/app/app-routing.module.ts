@@ -19,6 +19,8 @@ import {ReceivedOrderComponent} from "./components/order/received-order/received
 import {ColorComponent} from "./components/color/color.component";
 import {SizeComponent} from "./components/size/size.component";
 import {MaterialComponent} from "./components/material/material.component";
+import {ProductComponent} from "./components/product/product.component";
+import {ProductOptionComponent} from "./components/product-option/product-option.component";
 
 const routes: Routes = [
   { path: '', component: SignInComponent },
@@ -39,7 +41,9 @@ const routes: Routes = [
   { path: "order-detail/:id", component: OrderDetailComponent },
   { path: "color", component : ColorComponent},
   { path: "size", component : SizeComponent},
-  { path: "material", component : MaterialComponent}
+  { path: "material", component : MaterialComponent},
+  { path: "product",component : ProductComponent},
+  { path: "product-option", component: ProductOptionComponent}
 
 ];
 

@@ -40,4 +40,9 @@ export class CategoryService {
   deleteCategory(category : CategoryReq) {
     return this.http.post(AUTH_API + `admin/category/delete`,category,requestOptions);
   }
+
+  getAllCategory() {
+    return this.http.get(AUTH_API + `admin/category`,requestOptions);
+  }
+
 }
