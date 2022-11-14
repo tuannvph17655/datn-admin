@@ -38,3 +38,8 @@ export class Category {
   productNumber ?: Number;
 }
 
+export class Category4Admin {
+  id ?: String;
+  name ?: String;
+}
+

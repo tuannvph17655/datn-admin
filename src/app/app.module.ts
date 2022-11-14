@@ -29,6 +29,8 @@ import { RejectOrderComponent } from './components/order/reject-order/reject-ord
 import { AcceptOrderComponent } from './components/order/accept-order/accept-order.component';
 import { ShippingOrderComponent } from './components/order/shipping-order/shipping-order.component';
 import { ReceivedOrderComponent } from './components/order/received-order/received-order.component';
+import { ProductComponent } from './components/product/product.component';
+import { ProductOptionComponent } from './components/product-option/product-option.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +54,8 @@ import { ReceivedOrderComponent } from './components/order/received-order/receiv
     AcceptOrderComponent,
     ShippingOrderComponent,
     ReceivedOrderComponent,
+    ProductComponent,
+    ProductOptionComponent,
   ],
     imports: [
         BrowserModule,

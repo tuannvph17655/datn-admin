@@ -25,4 +25,8 @@ export class MaterialService {
   getListMaterial(materialReq : any){
     return this.http.post(AUTH_API +`admin/material/search`,materialReq,requestOptions);
   }
+
+  getAllMaterial() {
+    return this.http.get(AUTH_API + `admin/material`,requestOptions);
+  }
 }

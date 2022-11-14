@@ -22,6 +22,6 @@ export class ProductService {
   constructor(private http : HttpClient) { }
 
   getListProduct(req : any) {
-    return this.http.post(AUTH_API + ``)
+    return this.http.post(AUTH_API + `admin/product/search`, req, requestOptions);
   }
 }
