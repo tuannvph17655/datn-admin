@@ -1,6 +1,11 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
+import {Product} from "../models/Product";
+import {Category4Admin} from "../models/CategoryReq";
+import {Material} from "../models/Material";
+import {ProductOption} from "../models/ProductOption";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../environments/environment";
+
 
 
 const httpOptions = {
@@ -18,20 +23,13 @@ const AUTH_API = environment.baseUrl;
 @Injectable({
   providedIn: 'root'
 })
+export class ProductOptionService {
 
-export class ColorService {
-
-  constructor(private http : HttpClient) { }
-
-  searchColor(colorReq : any) {
-    return this.http.post(AUTH_API + `admin/color/search`,colorReq,requestOptions);
+  constructor(private http : HttpClient) {
   }
 
-  createColor(colorRes : any) {
-    return this.http.post(AUTH_API + `admin/color/create`,colorRes, requestOptions);
+  getAllProductOptionByProduct(req : any) {
+    return this.http.post(AUTH_API +  "admin/productOption/findByProductId", req, requestOptions );
   }
 
-  listColor() {
-    return this.http.get(AUTH_API + `color`,requestOptions);
-  }
 }

@@ -22,3 +22,13 @@ export class ColorRes {
     this.hex = hex;
   }
 }
+
+export class ColorResponse {
+  colorId ?: String ;
+  colorName ?: String ;
+
+  constructor(colorId: String, colorName: String) {
+    this.colorId = colorId;
+    this.colorName = colorName;
+  }
+}
