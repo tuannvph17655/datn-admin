@@ -11,6 +11,7 @@ import {ChangeStatusService} from 'src/app/services/change-status.service';
 import {OrderDetailService} from 'src/app/services/order-detail.service';
 import {CancelOrder} from "../../models/CancelOrder";
 import {OrderService} from "../../services/order.service";
+import {CustomerInfoRes} from "../../models/CustomerInfoRes";
 
 @Component({
   selector: 'app-order-detail',
@@ -24,6 +25,7 @@ export class OrderDetailComponent implements OnInit {
   orderInfo !: OrderInfo;
   priceResult !: PriceResult;
   orderStatus !: OrderStatus;
+  customerInforRes !: CustomerInfoRes;
   note: string = '';
 
   @ViewChild('verticalycentered') modal: any;
@@ -61,6 +63,8 @@ export class OrderDetailComponent implements OnInit {
         this.orderDetail = res.data;
         this.productOrder = res.data.items;
         this.priceResult = res.data.priceResult;
+        this.customerInforRes = res.data.customerInfoRes;
+        console.log("Customer info ", this.customerInforRes);
         console.log("prodcut order ", this.productOrder)
         console.log("price : ", this.priceResult);
         this.orderInfo = res.data.orderInfo;

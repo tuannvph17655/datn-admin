@@ -167,18 +167,23 @@
         <div>
           <button
             [hidden]="orderInfo.statusOrder === 'CANCEL' || orderInfo.statusOrder === 'PENDING' || orderInfo.statusOrder === 'ACCEPT'
-            || orderInfo.statusOrder === 'REJECT' "
+            || orderInfo.statusOrder === 'REJECT' || orderInfo.statusOrder === 'RECEIVED'   "
             class="back back-button btn btn-primary"
             data-bs-toggle="modal" data-bs-target="#verticalycentered">Giao thành công
           </button>
-          <button [hidden]="orderInfo.statusOrder === 'CANCEL' || orderInfo.statusOrder === 'REJECT' " class="back back-button btn btn-primary"
+          <button [hidden]="orderInfo.statusOrder === 'CANCEL' || orderInfo.statusOrder === 'REJECT' ||
+          orderInfo.statusOrder === 'SHIPPING'
+           ||orderInfo.statusOrder ==='PENDING'
+            || orderInfo.statusOrder === 'RECEIVED' " class="back back-button btn btn-primary"
                   data-bs-toggle="modal" data-bs-target="#verticalycentered">Giao hàng
           </button>
-          <button [hidden]="orderInfo.statusOrder === 'CANCEL' || orderInfo.statusOrder === 'ACCEPT' || orderInfo.statusOrder === 'REJECT' "
+          <button [hidden]="orderInfo.statusOrder === 'CANCEL' || orderInfo.statusOrder === 'ACCEPT' || orderInfo.statusOrder === 'REJECT'
+           || orderInfo.statusOrder === 'SHIPPING'  || orderInfo.statusOrder === 'RECEIVED'  "
                   class="back back-button btn btn-primary"
                   data-bs-toggle="modal" data-bs-target="#verticalycentered">Xác nhận
           </button>
           <button [hidden]="orderInfo.statusOrder === 'CANCEL' || orderInfo.statusOrder === 'REJECT'
+          || orderInfo.statusOrder === 'SHIPPING' || orderInfo.statusOrder === 'RECEIVED'
            " class="back back-button btn btn-danger"
                   data-bs-toggle="modal" data-bs-target="#cancelOrder">Từ chối
           </button>
@@ -189,9 +194,9 @@
             [hidden]="(orderInfo.statusOrder === 'CANCEL' ||
              orderInfo.statusOrder === 'PENDING' ||
               orderInfo.statusOrder === 'ACCEPT' ||
-              orderInfo.statusOrder === 'REJECT' ) "
+              orderInfo.statusOrder === 'REJECT' ) || orderInfo.statusOrder === 'RECEIVED'  "
             class="back back-button btn btn-info"
-            routerLink="/admin/cancel-orders">Giao không thành công
+            routerLink="/admin/cancel-orders">Giao thất bại
           </button>
         </div>
       </div>
