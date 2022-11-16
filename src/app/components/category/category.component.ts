@@ -3,6 +3,7 @@ import {CategoryReq, CategoryFilter, Category} from 'src/app/models/CategoryReq'
 import {CategoryService} from 'src/app/services/category.service';
 import {FormControl, FormGroup, RequiredValidator, Validators} from "@angular/forms";
 import {ToastrService} from "ngx-toastr";
+import {SidebarComponent} from "../../layouts/sidebar/sidebar.component";
 
 @Component({
   selector: 'app-category',
@@ -16,6 +17,8 @@ export class CategoryComponent implements OnInit {
     name: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required])
   })
+
+  public orderStatus = SidebarComponent
 
   public categories: Category[] = [];
   public page ? = Number;
