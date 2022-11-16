@@ -24,7 +24,10 @@ export class SizeService {
 
   constructor(private http : HttpClient) { }
 
-  getListSize(req : any) {
+  searchListSize(req : any) {
     return this.http.post(AUTH_API +`admin/size/search`, req,requestOptions);
+  }
+  getListSize() {
+    return this.http.get(AUTH_API +`size`,requestOptions);
   }
 }

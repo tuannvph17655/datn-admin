@@ -12,3 +12,14 @@ export class Size {
     }
 }
 
+export class SizeResponse {
+  sizeId ?: String;
+  sizeName ?: String;
+
+  constructor(sizeId: String, sizeName: String) {
+    this.sizeId = sizeId;
+    this.sizeName = sizeName;
+  }
+}
+
+

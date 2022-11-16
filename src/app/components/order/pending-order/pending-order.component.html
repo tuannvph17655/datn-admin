@@ -16,7 +16,7 @@
           <div class="card-body">
             <div id="search-container">
               <form action="" [formGroup]="filterOrderForm">
-                <input type="input" formControlName ="textSearch" placeholder="Search" >
+                <input type="search" formControlName ="textSearch" placeholder="Search" >
                 <span class="span_startDate">Từ<input formControlName = "startDate" type="date" id="startDate"></span>
                 <span class="span_endDate">Đến<input  formControlName = "endDate" type="date" id="endDate" ></span>
                 <button id="search" (click)="getListOrder()">Tìm kiếm</button>

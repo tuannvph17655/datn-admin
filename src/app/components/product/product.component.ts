@@ -6,7 +6,27 @@ import {CategoryService} from "../../services/category.service";
 import {Category4Admin} from "../../models/CategoryReq";
 import {MaterialService} from "../../services/material.service";
 import {Material} from "../../models/Material";
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyCn4iPmu8exd4BSNWuUEGSay4RW4f6tGtA",
+  authDomain: "datn-63761.firebaseapp.com",
+  projectId: "datn-63761",
+  storageBucket: "datn-63761.appspot.com",
+  messagingSenderId: "429679348592",
+  appId: "1:429679348592:web:26ed22834ab368ed3e1db5",
+  measurementId: "G-DXFVXD85VH"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',

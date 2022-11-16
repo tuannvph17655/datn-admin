@@ -43,7 +43,7 @@ const routes: Routes = [
   { path: "size", component : SizeComponent},
   { path: "material", component : MaterialComponent},
   { path: "product",component : ProductComponent},
-  { path: "product-option", component: ProductOptionComponent}
+  { path: "product-option/:id", component: ProductOptionComponent}
 
 ];
 

@@ -30,7 +30,7 @@ export class SizeComponent implements OnInit {
   }
 
   getListSize(req : any) {
-    this.sizeService.getListSize(req).subscribe({
+    this.sizeService.searchListSize(req).subscribe({
       next : (req : any) => {
         this.sizes = req.data;
       }

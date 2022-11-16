@@ -1,1 +1,123 @@
-<p>product-option works!</p>
+<main id="main" class="main">
+  <div class="pagetitle">
+    <h1>Danh mục</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a routerLink="/">Trang chủ</a></li>
+        <li class="breadcrumb-item">Sản phẩm</li>
+        <li class="breadcrumb-item">Phân loại sản phẩm</li>
+      </ol>
+    </nav>
+  </div>
+  <div class="container-xl" id="main-container">
+    <div class="table-responsive">
+      <div class="table-wrapper">
+        <div class="table-title">
+          <div class="row">
+            <div class="col-sm-8"><h2>Quản lý <b>phân loại sản phẩm</b></h2></div>
+            <div class="col-sm-4">
+              <a type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addOrEditCategoryModal">Thêm
+                mới</a>
+            </div>
+          </div>
+        </div>
+        <table class="table table-striped table-hover table-bordered">
+          <thead>
+          <tr>
+            <th>Màu sắc</th>
+            <th>Kích thước</th>
+            <th>Số lượng</th>
+            <th>Giá</th>
+            <th>Trạng thái</th>
+            <th>Ảnh</th>
+            <th>Thao tác</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let productOption of productOptions">
+            <td>{{productOption.colorName}}</td>
+            <td>{{productOption.sizeName}}</td>
+            <td>{{productOption.qty}}</td>
+            <td>{{productOption.price}}</td>
+            <td>{{productOption.active ? 'Hoạt động' : 'Không hoạt động'}}</td>
+            <td><img style="width: 50px; align-content: center " src="{{productOption.image}}"></td>
+            <td>
+              <a type="button" data-bs-toggle="modal" data-bs-target="#addOrEditCategoryModal" class="view"
+                 title="Xem chi tiết"
+                 data-toggle="tooltip"><i class="bi bi-pen-fill"></i></a>
+              <a class="edit" style="cursor: pointer" title="Xóa" data-toggle="tooltip"><i class="bi bi-trash-fill"></i></a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <div class="clearfix">
+          <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+          <ul class="pagination">
+            <li class="page-item disabled"><a href="#"><i class="fa fa-angle-double-left"></i></a></li>
+            <li class="page-item"><a href="#" class="page-link">1</a></li>
+            <li class="page-item"><a href="#" class="page-link">2</a></li>
+            <li class="page-item active"><a href="#" class="page-link">3</a></li>
+            <li class="page-item"><a href="#" class="page-link">4</a></li>
+            <li class="page-item"><a href="#" class="page-link">5</a></li>
+            <li class="page-item"><a href="#" class="page-link"><i class="fa fa-angle-double-right"></i></a></li>
+          </ul>
+        </div>
+
+
+      </div>
+    </div>
+    <!-- create modal -->
+    <div class="modal fade" id="addOrEditCategoryModal" tabindex="-1" data-bs-backdrop="false">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Phân loại sản phẩm</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-row">
+                <div class="row">
+                  <div class="form-group col-md-6">
+                    <label for="prd_option_price">Giá bán</label>
+                    <input type="number" class="form-control" id="prd_option_price" placeholder="Nhập giá bán">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="prd_option_qty">Số lượng</label>
+                    <input type="number" class="form-control" id="prd_option_qty" placeholder="Nhập số lượng">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group col-md-6">
+                    <label for="inputState">Màu sắc</label>
+                    <select id="inputState" class="form-control">
+                      <option selected>Chọn màu sắc...</option>
+                      <option *ngFor="let color of colors">{{color.colorName}}</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="input_material">Kích thước</label>
+                    <select id="input_material" class="form-control">
+                      <option selected>Chọn kích thước...</option>
+                      <option *ngFor="let size of sizes">{{size.sizeName}}</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group col-md-6">
+                    <label for="input_image">Chọn ảnh</label>
+                    <input class="form-control" type="file" (change)="uploadImage($event)" accept="*.png.jpg" id="input_image">
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            <button type="button" class="btn btn-primary" (click)="save()">Xác nhận</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
