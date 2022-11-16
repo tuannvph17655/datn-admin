@@ -6,8 +6,8 @@
       <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#"> <i
         class="bi bi-menu-button-wide"></i><span>Quản lý đơn hàng</span><i class="bi bi-chevron-down ms-auto"></i> </a>
       <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-        <li><a routerLink="/admin/pending-orders"> <i class="bi bi-circle"></i><span>Đơn hàng mới nhất</span> </a></li>
-        <li><a routerLink="/admin/accept-orders"> <i class="bi bi-circle"></i><span>Đã xác nhận</span> </a></li>
+        <li><a routerLink="/admin/pending-orders" (click)="fillStatus('PENDING')"> <i class="bi bi-circle"></i><span>Đơn hàng mới nhất</span> </a></li>
+        <li><a routerLink="/admin/accept-orders" (click)="fillStatus('ACCEPT')"> <i class="bi bi-circle"></i><span>Đã xác nhận</span> </a></li>
         <li><a routerLink="/admin/shipping-orders"> <i class="bi bi-circle"></i><span>Đang giao hàng</span> </a></li>
         <li><a routerLink="/admin/received-orders"> <i class="bi bi-circle"></i><span>Giao hàng thành công</span> </a>
         </li>

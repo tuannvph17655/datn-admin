@@ -6,6 +6,7 @@ import {FormControl, FormGroup} from "@angular/forms";
 import {OrderStatus} from "../../../models/OrderStatus";
 import {ToastrService} from "ngx-toastr";
 import {CancelOrder} from "../../../models/CancelOrder";
+import {environment, orderStatus} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-pending-order',
@@ -18,6 +19,7 @@ export class PendingOrderComponent implements OnInit {
   public totalPrice = '';
   public payed = '';
   public statusValue = 'PENDING';
+  public orderStatus = orderStatus.value;
 
   filterOrderForm = new FormGroup({
     textSearch: new FormControl(''),
@@ -43,6 +45,7 @@ export class PendingOrderComponent implements OnInit {
 
   ngOnInit(): void {
     this.getListOrder();
+    console.log("This status : ",this.orderStatus );
   }
 
   getListOrder() {
