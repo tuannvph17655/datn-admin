@@ -1,25 +1,25 @@
 import {Component, OnInit} from '@angular/core';
-import {Order} from "../../../models/Order";
-import {OrderService} from "../../../services/order.service";
-import {FilterOrderRequest} from "../../../models/FilterOrderRequest";
+import {Order, StatusOrder} from "../../models/Order";
+import {OrderService} from "../../services/order.service";
+import {FilterOrderRequest} from "../../models/FilterOrderRequest";
 import {FormControl, FormGroup} from "@angular/forms";
-import {OrderStatus} from "../../../models/OrderStatus";
+import {OrderStatus} from "../../models/OrderStatus";
 import {ToastrService} from "ngx-toastr";
-import {CancelOrder} from "../../../models/CancelOrder";
-import {environment, orderStatus} from "../../../../environments/environment";
+import {CancelOrder} from "../../models/CancelOrder";
 
 @Component({
-  selector: 'app-pending-order',
-  templateUrl: './pending-order.component.html',
-  styleUrls: ['./pending-order.component.css']
+  selector: 'app-order',
+  templateUrl: './order.component.html',
+  styleUrls: ['./order.component.css']
 })
-export class PendingOrderComponent implements OnInit {
+export class OrderComponent implements OnInit {
   public orders: Order[] = [];
   public ordersActive: Order[] = [];
   public totalPrice = '';
   public payed = '';
-  public statusValue = 'PENDING';
-  public orderStatus = orderStatus.value;
+  public status = '';
+  public orderStatuses: StatusOrder[] = [];
+  public orderStatusSelected = "";
 
   filterOrderForm = new FormGroup({
     textSearch: new FormControl(''),
@@ -39,13 +39,15 @@ export class PendingOrderComponent implements OnInit {
 
   constructor(
     private orderService: OrderService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
   ) {
   }
 
   ngOnInit(): void {
+    this.status = 'PENDING';
     this.getListOrder();
-    console.log("This status : ",this.orderStatus );
+    console.log("This status : ", this.status);
+    this.getListOrderStatus();
   }
 
   getListOrder() {
@@ -53,7 +55,7 @@ export class PendingOrderComponent implements OnInit {
       , this.filterOrderForm.value.endDate || ''
       , this.totalPrice
       , this.payed
-      , this.statusValue,
+      , this.status,
       this.filterOrderForm.value.textSearch || ''
       , this.filterOrderForm.value.page || '0', this.filterOrderForm.value.size || '100');
 
@@ -115,5 +117,20 @@ export class PendingOrderComponent implements OnInit {
       item.isActive = this.checkAll;
     });
     this.onItemSelectSpecialType();
+  }
+
+  getListOrderStatus() {
+    this.orderService.orderStatuses().subscribe({
+      next: (req: any) => {
+        this.orderStatuses = req.data;
+      }
+    })
+  }
+
+  changeOrderStatus(e: any) {
+    this.orderStatusSelected = e.target.value;
+    this.status = this.orderStatusSelected;
+    console.log("orderStatus target : " + this.orderStatusSelected);
+    this.getListOrder();
   }
 }

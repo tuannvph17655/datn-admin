@@ -1,6 +1,6 @@
 .orderCode:hover {
-  color: blue;
-  cursor: pointer;
+    color: blue;
+    cursor: pointer;
 }
 .icon-check {
   color: white;
@@ -25,7 +25,7 @@
 }
 #search-container input {
   background-color: transparent;
-  width: 230px;
+  width: 150px;
   border: none;
   border-bottom: 2px solid #110f29;
   padding : 0.5em 0.3em;
@@ -44,12 +44,9 @@
   border-radius: 5px;
   margin-top : 0.5em
 }
-.span_startDate  {
+.span_startDate, span_endDate {
   margin-left: 1em;
   margin-right: 1em;
-}
-span_endDate {
-  margin-left: 1em;
 }
 
 .toggle {
@@ -94,4 +91,20 @@ span_endDate {
 .toggle__input:checked ~ .toggle__fill::after {
   transform: translateX(var(--height));
 }
+
+.checkbox {
+  width: 18px;
+  height: 18px;
+  margin: 10px;
+}
+
+.dropdown_orderStatus {
+  margin: 0px !important;
+  width: 400px;
+}
+.order_status {
+  margin: 0 24px 0 24px ;
+  padding-top: 20px;
+}
+
 

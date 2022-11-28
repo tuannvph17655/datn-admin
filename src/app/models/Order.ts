@@ -11,6 +11,10 @@ export class Order {
   payed ?: boolean ;
   statusValue ?: string ;
   customerInfoRes ?: CustomerInfoRes;
+}
 
+export class StatusOrder{
+  orderStatus ?: String;
+  orderStatusName ?: String;
 }
 

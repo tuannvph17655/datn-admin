@@ -14,11 +14,19 @@
       <div class="col-lg-12">
         <div class="card">
           <div class="card-body">
+            <div class="row">
+              <div class="filter_type col col-3">
+                <span class="order_status">Chọn trạng thái</span>
+                <select class="form-control" style="margin-left: 24px;" formControlName="color" (change)="changeOrderStatus($event)">
+                <option class="dropdown_orderStatus" *ngFor="let orderStatus of orderStatuses" [value]="orderStatus.orderStatus" >{{orderStatus.orderStatusName}}</option>
+                </select>
+              </div>
+            </div>
             <div id="search-container">
               <form action="" [formGroup]="filterOrderForm">
                 <input type="search" formControlName="textSearch" placeholder="Tìm theo mã">
-                <span class="span_startDate">Từ<input formControlName="startDate" type="date" id="startDate"></span>
-                <span class="span_endDate">Đến<input formControlName="endDate" type="date" id="endDate"></span>
+                <span class="span_startDate">Từ : <input formControlName="startDate" type="date" id="startDate"></span>
+                <span class="span_endDate">Đến : <input formControlName="endDate" type="date" id="endDate"></span>
                 <button id="search" (click)="getListOrder()">Tìm kiếm</button>
                 <div style="float: right" *ngIf="ordersActive.length > 0">
                   <button class="btn btn-info btn-checkout" data-bs-toggle="modal" data-bs-target="#modal_accept "
@@ -58,7 +66,8 @@
                 </label></th>
                 <td class="orderCode"><a [routerLink]="['/order-detail/' + order.orderId]">{{order.orderCode}}</a></td>
                 <td>{{order.createDate}}</td>
-                <td>{{order.customerInfoRes?.name}}, {{order.customerInfoRes?.phone}}, {{order.customerInfoRes?.address}}</td>
+                <td>{{order.customerInfoRes?.name}}, {{order.customerInfoRes?.phone}}
+                  , {{order.customerInfoRes?.address}}</td>
                 <td class="price" style="color:#fcaf17;">{{order.totalPrice}}₫</td>
                 <td>{{order?.payed ? 'Đã thanh toán' : 'Chưa thanh toán' }}</td>
                 <td>

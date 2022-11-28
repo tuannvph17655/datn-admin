@@ -37,4 +37,8 @@ export class OrderService {
   rejectOrder(cancelOrder : CancelOrder):Observable<any> {
     return this.http.post<any>(AUTH_API +`admin/order/reject-order`,cancelOrder,requestOptions);
   }
+
+  orderStatuses(): Observable<any> {
+    return this.http.get<any>(AUTH_API + `admin/order/listOrderStatus`,requestOptions);
+  }
 }
