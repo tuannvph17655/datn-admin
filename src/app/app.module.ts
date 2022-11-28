@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './layouts/header/header.component';
 import { FooterComponent } from './layouts/footer/footer.component';
 import { SidebarComponent } from './layouts/sidebar/sidebar.component';
-import { PendingOrderComponent } from './components/order/pending-order/pending-order.component';
+import { OrderComponent } from './components/order/order.component';
 import { TabsComponent } from './components/tabs/tabs.component';
 import { TablesDataComponent } from './components/tables-data/tables-data.component';
 import { UsersProfileComponent } from './pages/users-profile/users-profile.component';
@@ -24,11 +24,6 @@ import { OrderDetailComponent } from './components/order-detail/order-detail.com
 import { ColorComponent } from './components/color/color.component';
 import { SizeComponent } from './components/size/size.component';
 import { MaterialComponent } from './components/material/material.component';
-import { CancelOrderComponent } from './components/order/cancel-order/cancel-order.component';
-import { RejectOrderComponent } from './components/order/reject-order/reject-order.component';
-import { AcceptOrderComponent } from './components/order/accept-order/accept-order.component';
-import { ShippingOrderComponent } from './components/order/shipping-order/shipping-order.component';
-import { ReceivedOrderComponent } from './components/order/received-order/received-order.component';
 import { ProductComponent } from './components/product/product.component';
 import { ProductOptionComponent } from './components/product-option/product-option.component';
 @NgModule({
@@ -37,7 +32,7 @@ import { ProductOptionComponent } from './components/product-option/product-opti
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
-    PendingOrderComponent,
+    OrderComponent,
     TabsComponent,
     TablesDataComponent,
     UsersProfileComponent,
@@ -49,11 +44,6 @@ import { ProductOptionComponent } from './components/product-option/product-opti
     ColorComponent,
     SizeComponent,
     MaterialComponent,
-    CancelOrderComponent,
-    RejectOrderComponent,
-    AcceptOrderComponent,
-    ShippingOrderComponent,
-    ReceivedOrderComponent,
     ProductComponent,
     ProductOptionComponent,
   ],

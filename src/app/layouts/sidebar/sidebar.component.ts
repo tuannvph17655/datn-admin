@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {environment, orderStatus} from "../../../environments/environment";
 
 @Component({
   selector: 'app-sidebar',
@@ -15,7 +14,7 @@ export class SidebarComponent implements OnInit {
   }
 
   fillStatus(value ?: any) {
-    orderStatus.value = value;
+    console.log("value = ", value);
   }
 
 }
