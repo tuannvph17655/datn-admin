@@ -24,6 +24,6 @@ export class EventService {
   }
 
   getListEvent(req : any) {
-    return this.http.post(AUTH_API + `admin/event/search`, req, requestOptions);
+    return this.http.post(AUTH_API + `admin/event`, req, requestOptions);
   }
 }
